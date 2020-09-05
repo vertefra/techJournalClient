@@ -1,33 +1,12 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Dashboard from './components/Dashoboard';
-import { BrowserRouter, Route } from 'react-router-dom';
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App.js";
 
-// every route will be added to the routes array
+// Entry point for rendering components
 
-const routes = [ 
-  {
-      path: '/',
-      component: Dashboard,
-      key: 'dashboard'
-  }  
-]
-
-ReactDOM.render( 
+ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      {
-        routes.map(route => {
-          return <Route
-                    component={route.component}
-                    path={route.path}
-                    key={route.key}
-                  />
-        })
-      }
-    </BrowserRouter>
+    <App />
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
-
-
