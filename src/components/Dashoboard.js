@@ -5,14 +5,19 @@ function Dashboard(props) {
   const [userState, dispatchUserState] = useContext(UserContext);
 
   // test to check if useContext works
+
   useEffect(() => {
-    dispatchUserState({ type: "SET_NAME", payload: "marco" });
-  }, [userState.name]);
+    dispatchUserState({ type: "ADD_ENTRY", payload: "marco" });
+  }, []);
+
+  useEffect(() => {
+    console.log(userState);
+  });
 
   return (
     <div className="App">
       <h1>Dashboard</h1>
-      <h2>{userState.name}</h2>
+      <h2>{userState.journalEntries}</h2>
     </div>
   );
 }

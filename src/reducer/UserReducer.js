@@ -6,6 +6,24 @@ const UserReducer = (state, action) => {
         name: action.payload,
       };
 
+    case "SET_PASSWORD":
+      return {
+        ...state,
+        password: action.payload,
+      };
+
+    case "SET_EMAIL":
+      return {
+        ...state,
+        email: action.payload,
+      };
+
+    case "ADD_ENTRY":
+      return {
+        ...state,
+        journalEntries: [...state.journalEntries, action.payload],
+      };
+
     default:
       return state;
   }
