@@ -10,6 +10,8 @@ import UserReducer from "../reducer/UserReducer";
 const defaultUserState = {
   id: "",
   name: "Francesco",
+  email: "",
+  password: "",
   journalEntries: ["1", "2"],
   createdEvents: [],
   eventsWillAttend: [],
