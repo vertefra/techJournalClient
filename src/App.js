@@ -12,6 +12,9 @@ export default function App() {
       component: Dashboard,
       key: "dashboard",
     },
+    {
+      path: "/login",
+    },
   ];
 
   // ========================================= //
