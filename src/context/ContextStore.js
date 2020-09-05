@@ -10,10 +10,11 @@ import UserReducer from "../reducer/UserReducer";
 const defaultUserState = {
   id: "",
   name: "Francesco",
+  journalEntries: ["1", "2"],
+  createdEvents: [],
+  eventsWillAttend: [],
+  myCanvasProject: [],
   isLogged: "",
-  entries: [],
-  myEntries: [],
-  myEvents: [],
 };
 
 // ====== ContextStore ======================= //
