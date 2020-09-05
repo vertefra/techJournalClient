@@ -6,8 +6,10 @@ function Dashboard(props) {
 
   // test to check if useContext works
 
+  const entries = [1, 2, 3, 4, 5, 6, 7, 8];
+
   useEffect(() => {
-    dispatchUserState({ type: "ADD_ENTRY", payload: "marco" });
+    dispatchUserState({ type: "LOAD_ENTRIES", payload: entries });
   }, []);
 
   useEffect(() => {

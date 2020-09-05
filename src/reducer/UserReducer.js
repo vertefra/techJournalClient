@@ -24,6 +24,12 @@ const UserReducer = (state, action) => {
         journalEntries: [...state.journalEntries, action.payload],
       };
 
+    case "LOAD_ENTRIES":
+      return {
+        ...state,
+        journalEntries: [...action.payload],
+      };
+
     default:
       return state;
   }
