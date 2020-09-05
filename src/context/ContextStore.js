@@ -9,10 +9,15 @@ import UserReducer from "../reducer/UserReducer";
 
 const defaultUserState = {
   id: "",
-  name: "Francesco",
+  name: "",
   email: "",
   password: "",
-  journalEntries: ["1", "2"],
+  journalEntries: [
+    {
+      title: "first entry",
+      content: "entry body",
+    },
+  ],
   createdEvents: [],
   eventsWillAttend: [],
   myCanvasProject: [],

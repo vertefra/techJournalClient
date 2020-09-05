@@ -9,7 +9,7 @@ function Dashboard(props) {
   const entries = [1, 2, 3, 4, 5, 6, 7, 8];
 
   useEffect(() => {
-    dispatchUserState({ type: "LOAD_ENTRIES", payload: entries });
+    dispatchUserState({ type: "SET_PASSWORD", payload: "entries" });
   }, []);
 
   useEffect(() => {
