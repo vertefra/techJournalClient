@@ -23,7 +23,7 @@ function Login() {
             dispatchUserState({ type: "SET_NAME", payload: response.user.name });
             dispatchUserState({ type: "SET_EMAIL", payload: response.user.email });
             dispatchUserState({ type: "LOAD_ENTRIES", payload: response.user.entries });
-            console.log(userState);
+            console.log(response, userState);
         } catch (error) {
             console.log(error);
         }
@@ -44,10 +44,10 @@ function Login() {
                 email: signupInfo.email,
                 password: signupInfo.password,
             });
-            console.log(response);
             localStorage.token = response.data.token;
             dispatchUserState({ type: "SET_NAME", payload: response.user.name });
             dispatchUserState({ type: "SET_EMAIL", payload: response.user.email });
+            console.log(response, userState);
         } catch (error) {
             console.log(error);
         }
