@@ -2,6 +2,7 @@ import React from "react";
 import Dashboard from "./components/Dashoboard";
 import LoginPage from "./components/login/LoginPage";
 import Canvas from "./components/canvas/Canvas";
+import Entries from "./components/entries/Entries"
 import { BrowserRouter, Route } from "react-router-dom";
 import ContextStore from "./context/ContextStore";
 

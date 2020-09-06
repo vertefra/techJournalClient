@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { UserContext } from "../context/ContextStore";
+import { UserContext } from "../../context/ContextStore";
 
 function Entries(props) {
     const [userState, dispatchUserState] = useContext(UserContext);
