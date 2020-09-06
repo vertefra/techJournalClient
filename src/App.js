@@ -2,7 +2,8 @@ import React from "react";
 import Dashboard from "./components/Dashoboard";
 import LoginPage from "./components/login/LoginPage";
 import Canvas from "./components/canvas/Canvas";
-import Entries from "./components/entries/Entries"
+import Entries from "./components/entries/Entries";
+import Events from "./components/events/Events";
 import { BrowserRouter, Route } from "react-router-dom";
 import ContextStore from "./context/ContextStore";
 
@@ -29,6 +30,11 @@ export default function App() {
       path: "/entries",
       component: Entries,
       key: "entries"
+    },
+    {
+      path: "/events",
+      component: Events,
+      key: "events"
     }
   ];
 
