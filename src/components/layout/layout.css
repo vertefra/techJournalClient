@@ -1,0 +1,10 @@
+.header {
+    background-color: rgb(19, 0, 65);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+.headerTitle {
+    color: rgb(255, 255, 255);
+}

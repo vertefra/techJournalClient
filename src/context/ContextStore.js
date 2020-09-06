@@ -12,12 +12,7 @@ const defaultUserState = {
   name: "",
   email: "",
   password: "",
-  journalEntries: [
-    {
-      title: "first entry",
-      content: "entry body",
-    },
-  ],
+  journalEntries: [],
   createdEvents: [],
   eventsWillAttend: [],
   myCanvasProject: [],

@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../context/ContextStore";
-import axios from 'axios';
-import './login.css';
+import axios from "axios";
+import Layout from "../layout/Layout"
+import "./login.css";
 
 function Login() {
     const [userState, dispatchUserState] = useContext(UserContext);
@@ -20,9 +21,9 @@ function Login() {
                 password: loginInfo.password
             });
             localStorage.token = response.data.token;
-            dispatchUserState({ type: "SET_NAME", payload: response.user.name });
-            dispatchUserState({ type: "SET_EMAIL", payload: response.user.email });
-            dispatchUserState({ type: "LOAD_ENTRIES", payload: response.user.entries });
+            dispatchUserState({ type: "SET_ID", payload: response.data.user._id });
+            dispatchUserState({ type: "SET_NAME", payload: response.data.user.name });
+            dispatchUserState({ type: "SET_EMAIL", payload: response.data.user.email });
             console.log(response, userState);
         } catch (error) {
             console.log(error);
@@ -45,8 +46,9 @@ function Login() {
                 password: signupInfo.password,
             });
             localStorage.token = response.data.token;
-            dispatchUserState({ type: "SET_NAME", payload: response.user.name });
-            dispatchUserState({ type: "SET_EMAIL", payload: response.user.email });
+            dispatchUserState({ type: "SET_ID", payload: response.data.user._id });
+            dispatchUserState({ type: "SET_NAME", payload: response.data.user.name });
+            dispatchUserState({ type: "SET_EMAIL", payload: response.data.user.email });
             console.log(response, userState);
         } catch (error) {
             console.log(error);
@@ -54,36 +56,45 @@ function Login() {
     }
     return (
         <div>
-            <div className='header'>
-                <h1 className='headerTitle'>App Title</h1>
-            </div>
-            <div className='pageContent'>
-                <div className='pageItem loginContainer'>
-                    <h2 className='title'>Login</h2>
-                    <form onSubmit={handleLogin}>
-                        <label htmlFor='loginEmail'>Email</label><br />
-                        <input type='text' name='email' id='loginEmail' value={loginInfo.email} onChange={handleLoginChange} /><br />
-                        <label htmlFor='loginPassword'>Password</label><br />
-                        <input type='password' name='password' id='loginPassword' value={loginInfo.password} onChange={handleLoginChange} /><br />
-                        <input type='submit' />
-                    </form>
+            <Layout>
+                <div className='pageContent'>
+                    <div className='pageItem loginContainer'>
+                        <h2 className='title'>Login</h2>
+                        <form className='loginForm' onSubmit={handleLogin}>
+                            <div>
+                                <label htmlFor='loginEmail'>Email</label><br />
+                                <input type='text' name='email' id='loginEmail' value={loginInfo.email} onChange={handleLoginChange} /><br />
+                            </div>
+                            <div>
+                                <label htmlFor='loginPassword'>Password</label><br />
+                                <input type='password' name='password' id='loginPassword' value={loginInfo.password} onChange={handleLoginChange} /><br />
+                            </div>
+                            <input type='submit' />
+                        </form>
+                    </div>
+                    <div className='or'>
+                        <h2 className='title'>Or</h2>
+                    </div>
+                    <div className='pageItem signupContainer'>
+                        <h2 className='title'>Sign Up</h2>
+                        <form className='loginForm' onSubmit={handleSignup}>
+                            <div>
+                                <label htmlFor='signupName'>Name</label><br />
+                                <input type='text' name='name' id='signupName' value={signupInfo.name} onChange={handleSignupChange} /><br />
+                            </div>
+                            <div>
+                                <label htmlFor='signupEmail'>Email</label><br />
+                                <input type='text' name='email' id='signupEmail' value={signupInfo.email} onChange={handleSignupChange} /><br />
+                            </div>
+                            <div>
+                                <label htmlFor='signupPassword'>Password</label><br />
+                                <input type='password' name='password' id='signupPassword' value={signupInfo.password} onChange={handleSignupChange} /><br />
+                            </div>
+                            <input type='submit' />
+                        </form>
+                    </div>
                 </div>
-                <div className='pageItem or'>
-                    <h2 className='title'>Or</h2>
-                </div>
-                <div className='pageItem signupContainer'>
-                    <h2 className='title'>Sign Up</h2>
-                    <form onSubmit={handleSignup}>
-                        <label htmlFor='signupName'>Name</label><br />
-                        <input type='text' name='name' id='signupName' value={signupInfo.name} onChange={handleSignupChange} /><br />
-                        <label htmlFor='signupEmail'>Email</label><br />
-                        <input type='text' name='email' id='signupEmail' value={signupInfo.email} onChange={handleSignupChange} /><br />
-                        <label htmlFor='signupPassword'>Password</label><br />
-                        <input type='password' name='password' id='signupPassword' value={signupInfo.password} onChange={handleSignupChange} /><br />
-                        <input type='submit' />
-                    </form>
-                </div>
-            </div>
+            </Layout>
         </div>
     )
 }

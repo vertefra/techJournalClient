@@ -5,36 +5,41 @@
     font-weight: 400;
     box-sizing: border-box;
 }
-.header {
-    background-color: rgb(19, 0, 65);
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    padding: 10px;
-}
-.headerTitle {
-    color: rgb(255, 255, 255);
-}
 .pageContent {
     width: 100%;
     display: flex;
     justify-content: center;
 }
 .pageItem {
-    width: 150px;
+    width: 200px;
     margin: 30px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
+    box-shadow: 0 1px 2px 0 rgba(60,64,67,.30), 0 2px 6px 2px rgba(60,64,67,.15);
+    border-radius: 8px;
 }
 .title {
     text-align: center;
 }
 .or {
+    height: 200px;
+    width: 10%;
     line-height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px 0;
+}
+.loginForm {
+    width: 90%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 input {
     width: 100%;
     margin: 0 auto;
-    margin-bottom: 3px;
+    margin-bottom: 10px;
 }
