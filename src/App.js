@@ -12,17 +12,22 @@ export default function App() {
     {
       path: "/dashboard",
       component: Dashboard,
-      key: "dashboard",
+      key: "dashboard"
     },
     {
       path: "/login",
       component: LoginPage,
-      key: "login",
+      key: "login"
     },
     {
       path: "/canvas",
       component: Canvas,
       key: "canvas"
+    },
+    {
+      path: "/entries",
+      component: Entries,
+      key: "entries"
     }
   ];
 
