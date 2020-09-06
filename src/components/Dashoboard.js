@@ -19,7 +19,7 @@ function Dashboard(props) {
   return (
     <div className="App">
       <h1>Dashboard</h1>
-      <h2>{userState.journalEntries}</h2>
+      <h2>{userState.journalEntries[0].title}</h2>
     </div>
   );
 }
