@@ -1,5 +1,11 @@
 const UserReducer = (state, action) => {
   switch (action.type) {
+    case "SET_ID":
+      return {
+        ...state,
+        id: action.payload,
+      };
+
     case "SET_NAME":
       return {
         ...state,

@@ -21,8 +21,9 @@ function Login() {
                 password: loginInfo.password
             });
             localStorage.token = response.data.token;
-            dispatchUserState({ type: "SET_NAME", payload: response.user.name });
-            dispatchUserState({ type: "SET_EMAIL", payload: response.user.email });
+            dispatchUserState({ type: "SET_ID", payload: response.data.user._id });
+            dispatchUserState({ type: "SET_NAME", payload: response.data.user.name });
+            dispatchUserState({ type: "SET_EMAIL", payload: response.data.user.email });
             console.log(response, userState);
         } catch (error) {
             console.log(error);
@@ -45,8 +46,9 @@ function Login() {
                 password: signupInfo.password,
             });
             localStorage.token = response.data.token;
-            dispatchUserState({ type: "SET_NAME", payload: response.user.name });
-            dispatchUserState({ type: "SET_EMAIL", payload: response.user.email });
+            dispatchUserState({ type: "SET_ID", payload: response.data.user._id });
+            dispatchUserState({ type: "SET_NAME", payload: response.data.user.name });
+            dispatchUserState({ type: "SET_EMAIL", payload: response.data.user.email });
             console.log(response, userState);
         } catch (error) {
             console.log(error);
