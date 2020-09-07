@@ -1,26 +1,19 @@
 import React, { useContext, useEffect } from "react";
 import { UserContext } from "../context/ContextStore";
+import Layout from './layout/Layout';
+import axios from 'axios'
 
 function Dashboard(props) {
   const [userState, dispatchUserState] = useContext(UserContext);
 
-  // test to check if useContext works
-
-  const entries = [1, 2, 3, 4, 5, 6, 7, 8];
-
-  useEffect(() => {
-    dispatchUserState({ type: "SET_PASSWORD", payload: "entries" });
-  }, []);
-
-  useEffect(() => {
-    console.log(userState);
-  });
-
   return (
-    <div className="App">
-      <h1>Dashboard</h1>
-      <h2>{userState.journalEntries[0].title}</h2>
-    </div>
+    <Layout>
+      <div className="App">
+        <h1>Dashboard</h1>
+        <h2>{userState.name}</h2>
+        <h2>{userState.email}</h2>
+      </div>
+    </Layout>
   );
 }
 
