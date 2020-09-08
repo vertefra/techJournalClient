@@ -10,12 +10,12 @@ function UserEvents(props) {
 
     useEffect(() => {
         {
-            if (useState.loggedIn) {
+            if (userState.loggedIn) {
                 (async () => {
                     try {
-                        const response = await axios.get(`${server}/users/${userState.id}/events`);
-                        console.log(response);
-                        dispatchUserState({ type: "LOAD_EVENTS", payload: response.date.events });
+                        const response = await axios.get(`${server}/users/${userState.id}/events?events=createdEvents`);
+                        // console.log(response);
+                        dispatchUserState({ type: "LOAD_EVENTS", payload: response.data });
                     } catch (error) {
                         console.log(error);
                     }
@@ -29,9 +29,7 @@ function UserEvents(props) {
             <h1>All User Events</h1>
             {userState.createdEvents.length > 0 && userState.createdEvents.map((event) => {
                 return (
-                    <div>
-                        <UserCardEvent event={event} />
-                    </div>
+                    <UserCardEvent key={event._id} event={event} />
                 )
             })}
         </Layout>

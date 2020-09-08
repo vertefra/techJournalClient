@@ -2,7 +2,7 @@ import React from "react";
 
 function UserCardEvent(props) {
     const event = props.event;
-
+    console.log(event)
     return (
         <div>
             <h2>{event.title}</h2>
