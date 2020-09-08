@@ -12,12 +12,6 @@ const UserReducer = (state, action) => {
         name: action.payload,
       };
 
-    case "SET_PASSWORD":
-      return {
-        ...state,
-        password: action.payload,
-      };
-
     case "SET_EMAIL":
       return {
         ...state,
@@ -34,6 +28,18 @@ const UserReducer = (state, action) => {
       return {
         ...state,
         journalEntries: [...action.payload],
+      };
+
+    case "SET_LOGGEDIN":
+      return {
+        ...state,
+        loggedIn: action.payload,
+      };
+
+    case "SET_LOCATION":
+      return {
+        ...state,
+        location: { ...state.location, ...action.payload },
       };
 
     default:

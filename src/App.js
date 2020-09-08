@@ -3,7 +3,10 @@ import Dashboard from "./components/Dashoboard";
 import LoginPage from "./components/login/LoginPage";
 import Canvas from "./components/canvas/Canvas";
 import Entries from "./components/entries/Entries";
+<<<<<<< HEAD
 import Events from "./components/events/Events";
+=======
+>>>>>>> 2eff19115a14f4e788b53f5f995e6074a56185ef
 import { BrowserRouter, Route } from "react-router-dom";
 import ContextStore from "./context/ContextStore";
 
@@ -14,21 +17,22 @@ export default function App() {
     {
       path: "/dashboard",
       component: Dashboard,
-      key: "dashboard"
+      key: "dashboard",
     },
     {
       path: "/login",
       component: LoginPage,
-      key: "login"
+      key: "login",
     },
     {
       path: "/canvas",
       component: Canvas,
-      key: "canvas"
+      key: "canvas",
     },
     {
       path: "/entries",
       component: Entries,
+<<<<<<< HEAD
       key: "entries"
     },
     {
@@ -36,6 +40,10 @@ export default function App() {
       component: Events,
       key: "events"
     }
+=======
+      key: "entries",
+    },
+>>>>>>> 2eff19115a14f4e788b53f5f995e6074a56185ef
   ];
 
   // ========================================= //

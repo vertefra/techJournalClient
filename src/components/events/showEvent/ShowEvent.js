@@ -8,17 +8,17 @@ function ShowEvent(props) {
 
     const event = props.event
 
-    // useEffect(() => {
-    //     (async () => {
-    //         try {
-    //             const response = await axios.get(`https://techjournalserver.herokuapp.com/events/:id`)
-    //             console.log(response);
-    //             updateEvent([...response.date]);
-    //         } catch (error) {
-    //             console.log(error);
-    //         }
-    //     })();
-    // }, []);
+    useEffect(() => {
+        (async () => {
+            try {
+                const response = await axios.get(`https://techjournalserver.herokuapp.com/events/:id`)
+                console.log(response);
+                updateEvent([...response.date]);
+            } catch (error) {
+                console.log(error);
+            }
+        })();
+    }, []);
 
     return (
         <Layout>

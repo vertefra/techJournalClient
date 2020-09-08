@@ -1,8 +1,9 @@
 import React, { useContext, useEffect } from "react";
 import { withRouter } from "react-router-dom"
 import { UserContext } from "../../context/ContextStore";
-import axios from 'axios'
-import './layout.css'
+import axios from 'axios';
+import './layout.css';
+const server = "https://techjournalserver.herokuapp.com";
 
 function Layout(props) {
     const [userState, dispatchUserState] = useContext(UserContext);
@@ -18,15 +19,17 @@ function Layout(props) {
         }
     };
     useEffect(() => {
-        const userIdentification = parseJwt(localStorage.token)
-        console.log(userIdentification);
+        if (!localStorage.token) {
+            return
+        }
+        const userIdentification = parseJwt(localStorage.token);
         (async () => {
             try {
-                const response = await axios.get(`http://localhost:3001/users/${userIdentification.id}`);
-                console.log(response);
+                const response = await axios.get(`${server}/users/${userIdentification.id}`);
                 dispatchUserState({ type: "SET_ID", payload: response.data._id });
                 dispatchUserState({ type: "SET_NAME", payload: response.data.name });
                 dispatchUserState({ type: "SET_EMAIL", payload: response.data.email });
+                dispatchUserState({ type: "SET_LOGGEDIN", payload: true });
             } catch (error) {
                 console.log(error)
             }
@@ -36,11 +39,19 @@ function Layout(props) {
         <div>
             <div className='header'>
                 <h1 className='headerTitle'>App Title</h1>
-                <div>
-                    <a href='/dashboard'>Dashboard</a>
-                    <a href='/entries'>Entries</a>
-                    <a href='/canvas'>Canvas</a>
-                    <button onClick={handleLogout}>Log Out</button>
+                <div className='navBar'>
+                    <div className='navItem'>
+                        <a className='itemText' href='/dashboard'>Dashboard</a>
+                    </div>
+                    <div className='navItem'>
+                        <a className='itemText' href='/entries'>Entries</a>
+                    </div>
+                    <div className='navItem'>
+                        <a className='itemText' href='/canvas'>Canvas</a>
+                    </div>
+                    <div className='navItem'>
+                        <button className='itemText' onClick={handleLogout}>Log Out</button>
+                    </div>
                 </div>
             </div>
             <div>

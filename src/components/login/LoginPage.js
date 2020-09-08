@@ -3,8 +3,9 @@ import { UserContext } from "../../context/ContextStore";
 import axios from "axios";
 import Layout from "../layout/Layout"
 import "./login.css";
+const server = "https://techjournalserver.herokuapp.com";
 
-function Login() {
+function Login(props) {
     const [userState, dispatchUserState] = useContext(UserContext);
     const [loginInfo, updateLoginInfo] = useState({
         email: '',
@@ -16,15 +17,13 @@ function Login() {
     const handleLogin = async event => {
         event.preventDefault();
         try {
-            const response = await axios.post('http://localhost:3001/users/login', {
+            const response = await axios.post(`${server}/users/login`, {
                 email: loginInfo.email,
                 password: loginInfo.password
             });
             localStorage.token = response.data.token;
-            dispatchUserState({ type: "SET_ID", payload: response.data.user._id });
-            dispatchUserState({ type: "SET_NAME", payload: response.data.user.name });
-            dispatchUserState({ type: "SET_EMAIL", payload: response.data.user.email });
             console.log(response, userState);
+            props.history.push('/dashboard')
         } catch (error) {
             console.log(error);
         }
@@ -40,16 +39,14 @@ function Login() {
     const handleSignup = async event => {
         event.preventDefault();
         try {
-            const response = await axios.post("http://localhost:3001/users/signup", {
+            const response = await axios.post(`${server}/users/signup`, {
                 name: signupInfo.name,
                 email: signupInfo.email,
                 password: signupInfo.password,
             });
             localStorage.token = response.data.token;
-            dispatchUserState({ type: "SET_ID", payload: response.data.user._id });
-            dispatchUserState({ type: "SET_NAME", payload: response.data.user.name });
-            dispatchUserState({ type: "SET_EMAIL", payload: response.data.user.email });
             console.log(response, userState);
+            props.history.push('/dashboard')
         } catch (error) {
             console.log(error);
         }
