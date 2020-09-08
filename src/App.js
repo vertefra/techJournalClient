@@ -5,7 +5,6 @@ import Canvas from "./components/canvas/Canvas";
 import Entries from "./components/entries/Entries";
 import { BrowserRouter, Route } from "react-router-dom";
 import ContextStore from "./context/ContextStore";
-import TestComponent from "./components/locationSearch/TestComponent";
 
 export default function App() {
   // ROUTES ================================== //
@@ -30,11 +29,6 @@ export default function App() {
       path: "/entries",
       component: Entries,
       key: "entries",
-    },
-    {
-      path: "/location",
-      component: TestComponent,
-      key: "location",
     },
   ];
 
