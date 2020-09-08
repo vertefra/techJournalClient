@@ -2,37 +2,39 @@ import React, { useContext, useState, useEffect } from "react";
 import { UserContext } from "../../context/ContextStore";
 import Layout from "../layout/Layout";
 import axios from "axios";
+import CardEvent from "./cardEvent/CardEvent.js";
+import "./events.css";
 
 function Events(props) {
     const [userState, dispatchUserState] = useContext(UserContext);
-    // const [newEvent, updateNewEvent] = useState({
-    //     title: '',
-    //     date: '',
-    //     time: '',
-    //     description: '',
-    //     location: '',
-    //     topic: '',
-    //     host: {},
-    //     speaker: {},
-    // });
-    // const handleCreateEvent = () => {
-    //     updateNewEvent({ ...newEvent, [event.target.id]: event.target.value });
 
-    //     const handlleCreate = async event => {
-    //         event.preventDefault();
-    //         try {
-    //             const response = await axios.post('http://localhost:3001/users/events', {
+    // Index Page - All Events
+    const [allEvents, updateAllEvents] = useState([]);
+    useEffect(() => {
+        (async () => {
+            try {
+                const response = await axios.get('https://techjournalserver.herokuapp.com/events');
+                console.log(response)
+                updateAllEvents([...response.data]);
+            } catch (error) {
+                console.log(error);
+            }
+        })();
+    }, []);
 
-    //             })
-    //         }
-    // }
-
-    // }
+    useEffect(() => {
+        console.log(allEvents)
+    }, [allEvents]);
 
     return (
         <Layout>
-            <div>
-                <h1>All Events Created by a User</h1>
+            <div className="AllEventsContainer">
+                <h1>All Events</h1>
+                {allEvents.length > 0 && allEvents.map(event => {
+                    return (
+                        <CardEvent event={event} />
+                    );
+                })}
             </div>
         </Layout>
     );
