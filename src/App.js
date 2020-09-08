@@ -2,9 +2,10 @@ import React from "react";
 import Dashboard from "./components/Dashoboard";
 import LoginPage from "./components/login/LoginPage";
 import Canvas from "./components/canvas/Canvas";
-import Entries from "./components/entries/Entries"
+import Entries from "./components/entries/Entries";
 import { BrowserRouter, Route } from "react-router-dom";
 import ContextStore from "./context/ContextStore";
+import LocationSearch from "./components/locationSearch/LocationSearch";
 
 export default function App() {
   // ROUTES ================================== //
@@ -13,23 +14,28 @@ export default function App() {
     {
       path: "/dashboard",
       component: Dashboard,
-      key: "dashboard"
+      key: "dashboard",
     },
     {
       path: "/login",
       component: LoginPage,
-      key: "login"
+      key: "login",
     },
     {
       path: "/canvas",
       component: Canvas,
-      key: "canvas"
+      key: "canvas",
     },
     {
       path: "/entries",
       component: Entries,
-      key: "entries"
-    }
+      key: "entries",
+    },
+    {
+      path: "/location",
+      component: LocationSearch,
+      key: "location",
+    },
   ];
 
   // ========================================= //

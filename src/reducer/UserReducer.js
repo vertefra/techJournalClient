@@ -36,6 +36,12 @@ const UserReducer = (state, action) => {
         journalEntries: [...action.payload],
       };
 
+    case "SET_LOCATION":
+      return {
+        ...state,
+        location: { ...state.location, ...action.payload },
+      };
+
     default:
       return state;
   }
