@@ -39,11 +39,19 @@ function Layout(props) {
         <div>
             <div className='header'>
                 <h1 className='headerTitle'>App Title</h1>
-                <div>
-                    <a href='/dashboard'>Dashboard</a>
-                    <a href='/entries'>Entries</a>
-                    <a href='/canvas'>Canvas</a>
-                    <button onClick={handleLogout}>Log Out</button>
+                <div className='navBar'>
+                    <div className='navItem'>
+                        <a className='itemText' href='/dashboard'>Dashboard</a>
+                    </div>
+                    <div className='navItem'>
+                        <a className='itemText' href='/entries'>Entries</a>
+                    </div>
+                    <div className='navItem'>
+                        <a className='itemText' href='/canvas'>Canvas</a>
+                    </div>
+                    <div className='navItem'>
+                        <button className='itemText' onClick={handleLogout}>Log Out</button>
+                    </div>
                 </div>
             </div>
             <div>
