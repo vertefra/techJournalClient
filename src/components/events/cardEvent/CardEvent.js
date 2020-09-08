@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 function CardEvent(props) {
     const event = props.event
     // console.log(event)
-    console.log(event.host.name)
+    // console.log(event.host.name)
     return (
         <div className="CardEventContainer">
             <div className="CardItem">
