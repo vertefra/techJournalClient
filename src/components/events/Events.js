@@ -4,6 +4,7 @@ import Layout from "../layout/Layout";
 import axios from "axios";
 import CardEvent from "./cardEvent/CardEvent.js";
 import "./events.css";
+import { server } from '../../setting';
 
 function Events(props) {
     const [userState, dispatchUserState] = useContext(UserContext);
@@ -13,7 +14,7 @@ function Events(props) {
     useEffect(() => {
         (async () => {
             try {
-                const response = await axios.get('https://techjournalserver.herokuapp.com/events');
+                const response = await axios.get(`${server}/events`);
                 console.log(response)
                 updateAllEvents([...response.data]);
             } catch (error) {

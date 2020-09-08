@@ -6,8 +6,13 @@ import Entries from "./components/entries/Entries";
 import { BrowserRouter, Route } from "react-router-dom";
 import ContextStore from "./context/ContextStore";
 import Events from "./components/events/Events";
+<<<<<<< HEAD
 import ShowEvent from "./components/events/showEvent/ShowEvent";
 import "./components/animations.css";
+=======
+import ShowEvent from "./components/events/showEvent/ShowEvent"
+import UserEvents from "./components/userEvents/UserEvents";
+>>>>>>> e72e67efa5bbf390c4f24a6481414d34cfc78397
 
 export default function App() {
   // ROUTES ================================== //
@@ -42,8 +47,18 @@ export default function App() {
     {
       path: "/events/:id",
       component: ShowEvent,
+<<<<<<< HEAD
       key: "showEvent",
     },
+=======
+      key: "showEvent"
+    },
+    {
+      path: "/myevents",
+      component: UserEvents,
+      key: "myevents"
+    }
+>>>>>>> e72e67efa5bbf390c4f24a6481414d34cfc78397
   ];
 
   // ========================================= //

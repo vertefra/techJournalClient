@@ -9,23 +9,29 @@ function Entries(props) {
 
   useEffect(() => {
     {
-      (async () => {
-        try {
-          const response = await fetch(
-            `${server}/users/${userState.id}/entries`
-          );
-          const data = await response.json();
-          console.log(data);
-          dispatchUserState({
-            type: "LOAD_ENTRIES",
-            payload: data.entries,
-          });
-        } catch (error) {
-          console.log(error);
-        }
-      })();
+      if (userState.loggedIn) {
+        (async () => {
+          try {
+            const response = await fetch(
+              `${server}/users/${userState.id}/entries`
+            );
+            const data = await response.json();
+            console.log(data);
+            dispatchUserState({
+              type: "LOAD_ENTRIES",
+              payload: data.entries,
+            });
+          } catch (error) {
+            console.log(error);
+          }
+        })();
+      }
     }
-  }, []);
+  }, [userState.loggedIn]);
+
+  useEffect(() => {
+    console.log("rerender");
+  }, [userState.journalEntries]);
 
   return (
     <Layout>
