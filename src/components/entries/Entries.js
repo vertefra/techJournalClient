@@ -6,6 +6,7 @@ import EntryCard from "./EntryCard";
 import { server } from "../../setting";
 function Entries(props) {
   const [userState, dispatchUserState] = useContext(UserContext);
+  const [entries, updateEntries] = useState([]);
 
   useEffect(() => {
     {
@@ -17,10 +18,7 @@ function Entries(props) {
             );
             const data = await response.json();
             console.log(data);
-            dispatchUserState({
-              type: "LOAD_ENTRIES",
-              payload: data.entries,
-            });
+            updateEntries([...entries, ...data.entries]);
           } catch (error) {
             console.log(error);
           }
@@ -30,15 +28,15 @@ function Entries(props) {
   }, [userState.loggedIn]);
 
   useEffect(() => {
-    console.log("rerender");
-  }, [userState.journalEntries]);
+    console.log("rerender", entries, userState);
+  }, [entries]);
 
   return (
     <Layout>
       <AddEntryForm />
       <ul>
-        {userState.journalEntries.length > 0 &&
-          userState.journalEntries.map((entry) => {
+        {entries.length > 0 &&
+          entries.map((entry) => {
             return <EntryCard key={entry._id} entry={entry} />;
           })}
       </ul>

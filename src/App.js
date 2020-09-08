@@ -6,7 +6,7 @@ import Entries from "./components/entries/Entries";
 import { BrowserRouter, Route } from "react-router-dom";
 import ContextStore from "./context/ContextStore";
 import Events from "./components/events/Events";
-import ShowEvent from "./components/events/showEvent/ShowEvent"
+import ShowEvent from "./components/events/showEvent/ShowEvent";
 import UserEvents from "./components/userEvents/UserEvents";
 
 export default function App() {
@@ -42,13 +42,13 @@ export default function App() {
     {
       path: "/events/:id",
       component: ShowEvent,
-      key: "showEvent"
+      key: "showEvent",
     },
     {
       path: "/myevents",
       component: UserEvents,
-      key: "myevents"
-    }
+      key: "myevents",
+    },
   ];
 
   // ========================================= //
