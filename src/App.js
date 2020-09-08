@@ -8,7 +8,6 @@ import ContextStore from "./context/ContextStore";
 import Events from "./components/events/Events";
 import ShowEvent from "./components/events/showEvent/ShowEvent";
 import "./components/animations.css";
-import ShowEvent from "./components/events/showEvent/ShowEvent"
 import UserEvents from "./components/userEvents/UserEvents";
 
 export default function App() {
