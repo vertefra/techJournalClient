@@ -3,7 +3,7 @@ import axios from "axios";
 import Layout from "../../layout/Layout";
 import { Link } from "react-router-dom";
 import "./showEvent.css";
-
+import { server } from '../../../setting';
 
 function ShowEvent(props) {
     // const [userState, dispatchUserState] = useContext(UserContext);
@@ -13,7 +13,7 @@ function ShowEvent(props) {
         (async () => {
             try {
                 const id = props.match.params.id
-                const response = await axios.get(`https://techjournalserver.herokuapp.com/events/${id}`)
+                const response = await axios.get(`${server}/events/${id}`)
                 console.log(response);
                 updateEvent({ ...response.data });
             } catch (error) {
@@ -39,7 +39,7 @@ function ShowEvent(props) {
                                 <h4>Description: {event.description}</h4>
                                 <h4>Speaker Info:</h4>
                                 <h4>Name: {event.speaker.name}</h4>
-                                <h4>Title:{event.speaker.title}</h4>
+                                <h4>Title: {event.speaker.title}</h4>
                             </div>
                             <div className="CardItemDetails">
                                 <h3>Event Details</h3>
