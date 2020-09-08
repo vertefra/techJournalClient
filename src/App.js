@@ -6,7 +6,8 @@ import Entries from "./components/entries/Entries";
 import { BrowserRouter, Route } from "react-router-dom";
 import ContextStore from "./context/ContextStore";
 import Events from "./components/events/Events";
-import ShowEvent from "./components/events/showEvent/ShowEvent"
+import ShowEvent from "./components/events/showEvent/ShowEvent";
+import "./components/animations.css";
 
 export default function App() {
   // ROUTES ================================== //
@@ -36,13 +37,13 @@ export default function App() {
       exact: true,
       path: "/events",
       component: Events,
-      key: "events"
+      key: "events",
     },
     {
       path: "/events/:id",
       component: ShowEvent,
-      key: "showEvent"
-    }
+      key: "showEvent",
+    },
   ];
 
   // ========================================= //

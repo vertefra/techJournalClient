@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import "./addEntry.css";
 import axios from "axios";
 import { server } from "../../setting";
@@ -16,6 +16,7 @@ export default function AddEntryForm(props) {
   };
 
   const handleSubmit = (e) => {
+    console.log("submitting?");
     e.preventDefault();
     (async () => {
       try {
@@ -23,6 +24,7 @@ export default function AddEntryForm(props) {
           ...entry,
         });
         const data = await response;
+        console.log(data);
         updateEntry({ ...entry, ...{ title: "", content: "" } });
       } catch (error) {
         console.log(error);
@@ -49,7 +51,7 @@ export default function AddEntryForm(props) {
         <div>
           <label htmlFor="content">content</label>
           <br />
-          <input
+          <textarea
             type="text"
             name="content"
             id="content"

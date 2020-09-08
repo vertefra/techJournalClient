@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../context/ContextStore";
 import Layout from "../layout/Layout";
 import AddEntryForm from "./AddEntryForm";
@@ -9,25 +9,23 @@ function Entries(props) {
 
   useEffect(() => {
     {
-      if (userState.loggedIn) {
-        (async () => {
-          try {
-            const response = await fetch(
-              `${server}/users/${userState.id}/entries`
-            );
-            const data = await response.json();
-            console.log(data);
-            dispatchUserState({
-              type: "LOAD_ENTRIES",
-              payload: data.entries,
-            });
-          } catch (error) {
-            console.log(error);
-          }
-        })();
-      }
+      (async () => {
+        try {
+          const response = await fetch(
+            `${server}/users/${userState.id}/entries`
+          );
+          const data = await response.json();
+          console.log(data);
+          dispatchUserState({
+            type: "LOAD_ENTRIES",
+            payload: data.entries,
+          });
+        } catch (error) {
+          console.log(error);
+        }
+      })();
     }
-  }, [userState.loggedIn]);
+  }, []);
 
   return (
     <Layout>

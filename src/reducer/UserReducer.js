@@ -27,7 +27,7 @@ const UserReducer = (state, action) => {
     case "LOAD_ENTRIES":
       return {
         ...state,
-        journalEntries: [...action.payload],
+        journalEntries: [...state.journalEntries, ...action.payload],
       };
 
     case "SET_LOGGEDIN":
