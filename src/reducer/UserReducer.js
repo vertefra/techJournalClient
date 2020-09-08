@@ -42,6 +42,12 @@ const UserReducer = (state, action) => {
         location: { ...state.location, ...action.payload },
       };
 
+    case "LOAD_EVENTS":
+      return {
+        ...state,
+        createdEvents: [...state.createdEvents, ...action.payload],
+      };
+
     default:
       return state;
   }
