@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom';
 function CardEvent(props) {
     const event = props.event
     // console.log(event)
+    // console.log(event.speaker.name)
+    console.log(event.host.name)
     return (
         <div className="CardEventContainer">
             <div className="CardItem">
@@ -15,6 +17,7 @@ function CardEvent(props) {
                 {/* <h4>{event.topic}</h4> */}
 
                 {/* <ShowEvent event={event} /> */}
+
                 <Link to={`/${event._id}`}>
                     <div key={event._id}>Learn More</div>
                 </Link>

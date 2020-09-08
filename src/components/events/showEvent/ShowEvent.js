@@ -4,21 +4,21 @@ import Layout from "../../layout/Layout";
 import { Link } from "react-router-dom";
 
 function ShowEvent(props) {
-    // const [userState, dispatchUserState] = useContext(UserContext);
+    const [userState, dispatchUserState] = useContext(UserContext);
 
-    const [event, updateEvent] = useState({});
+    const event = props.event
 
-    useEffect(() => {
-        (async () => {
-            try {
-                const response = await axios.get(`https://techjournalserver.herokuapp.com/events/:id`)
-                console.log(response);
-                updateEvent([...response.date]);
-            } catch (error) {
-                console.log(error);
-            }
-        })();
-    }, []);
+    // useEffect(() => {
+    //     (async () => {
+    //         try {
+    //             const response = await axios.get(`https://techjournalserver.herokuapp.com/events/:id`)
+    //             console.log(response);
+    //             updateEvent([...response.date]);
+    //         } catch (error) {
+    //             console.log(error);
+    //         }
+    //     })();
+    // }, []);
 
     return (
         <Layout>
@@ -32,7 +32,7 @@ function ShowEvent(props) {
                         </div>
                         <div>
                             <h3>About the Event</h3>
-                            <h4>Topic: {event.skill[0]}</h4>
+                            {/* <h4>Topic: {event.skill[0]}</h4> */}
                             <h4>Description: {event.description}</h4>
                             <h4>Speaker Info:</h4>
                             <h4>Name: {event.speaker.name}</h4>
