@@ -5,7 +5,6 @@
     font-weight: 400;
     box-sizing: border-box;
 }
-<<<<<<< HEAD
 .loginBody {
     background-image: url('../../images//stripesBackground.jpg');
     background-size: cover;
@@ -13,9 +12,6 @@
     height: 100vh;
     min-width: 700px;
 }
-=======
-
->>>>>>> d28372975c459978a585432f0559e4ed106baed7
 .pageContent {
     width: 100%;
     margin: calc(40vh - 140px) 0;
@@ -38,7 +34,6 @@
 .title {
     text-align: center;
 }
-<<<<<<< HEAD
 .orTitle {
     background-color: rgba(255, 255, 255, .7);
     height: 40px;
@@ -46,9 +41,6 @@
     width: 50px;
     border-radius: 8px;
 }
-=======
-
->>>>>>> d28372975c459978a585432f0559e4ed106baed7
 .or {
     height: 200px;
     width: 10%;
