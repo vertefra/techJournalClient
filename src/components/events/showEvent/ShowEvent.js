@@ -3,23 +3,24 @@ import axios from "axios";
 import Layout from "../../layout/Layout";
 import { Link } from "react-router-dom";
 
-function ShowEvent(props) {
-    const [userState, dispatchUserState] = useContext(UserContext);
 
-    const event = props.event
+function ShowEvent(props) {
+    // const [userState, dispatchUserState] = useContext(UserContext);
+    const [event, updateEvent] = useState({});
 
     useEffect(() => {
         (async () => {
             try {
-                const response = await axios.get(`https://techjournalserver.herokuapp.com/events/:id`)
+                const id = props.match.params.id
+                const response = await axios.get(`https://techjournalserver.herokuapp.com/events/${id}`)
                 console.log(response);
-                updateEvent([...response.date]);
+                updateEvent({ ...response.data });
             } catch (error) {
                 console.log(error);
             }
         })();
     }, []);
-
+    console.log(event.speaker)
     return (
         <Layout>
             <div>
@@ -35,8 +36,8 @@ function ShowEvent(props) {
                             {/* <h4>Topic: {event.skill[0]}</h4> */}
                             <h4>Description: {event.description}</h4>
                             <h4>Speaker Info:</h4>
-                            <h4>Name: {event.speaker.name}</h4>
-                            <h4>Title:{event.speaker.title}</h4>
+                            {/* <h4>Name: {event.speaker.name}</h4>
+                            <h4>Title:{event.speaker.title}</h4> */}
                         </div>
                         <div>
                             <h3>Event Details</h3>
