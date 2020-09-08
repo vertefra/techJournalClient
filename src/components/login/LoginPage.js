@@ -3,7 +3,7 @@ import { UserContext } from "../../context/ContextStore";
 import axios from "axios";
 import Layout from "../layout/Layout"
 import "./login.css";
-const server = "https://techjournalserver.herokuapp.com";
+import { server } from '../../setting';
 
 function Login(props) {
     const [userState, dispatchUserState] = useContext(UserContext);
@@ -52,7 +52,7 @@ function Login(props) {
         }
     }
     return (
-        <div>
+        <div className='loginBody'>
             <Layout>
                 <div className='pageContent'>
                     <div className='pageItem loginContainer'>
@@ -70,7 +70,7 @@ function Login(props) {
                         </form>
                     </div>
                     <div className='or'>
-                        <h2 className='title'>Or</h2>
+                        <h2 className='orTitle title'>Or</h2>
                     </div>
                     <div className='pageItem signupContainer'>
                         <h2 className='title'>Sign Up</h2>
