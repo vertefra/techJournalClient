@@ -1,0 +1,28 @@
+.newEntry {
+    margin: 50px auto;
+    width: 600px;
+}
+
+.newEntry input {
+    height: 30px;
+}
+
+
+.entryCard {
+    min-height: 205px;
+    padding: 10px;
+}
+
+.cardTitle {
+    font-size: 30px;
+    align-self: flex-start;
+    text-transform: capitalize;
+    width: 100%;
+    padding: 5px;
+    border-bottom: solid 2px black;
+}
+
+.cardContent {
+    align-self: stretch;
+    margin: 15px;
+}

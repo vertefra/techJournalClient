@@ -1,42 +1,45 @@
-import React, { useContext, useEffect } from 'react';
-import { UserContext } from '../../context/ContextStore';
-import axios from 'axios';
-import Layout from '../layout/Layout';
-const server = "https://techjournalserver.herokuapp.com";
-
+import React, { useContext, useEffect } from "react";
+import { UserContext } from "../../context/ContextStore";
+import Layout from "../layout/Layout";
+import AddEntryForm from "./AddEntryForm";
+import EntryCard from "./EntryCard";
+import { server } from "../../setting";
 function Entries(props) {
-    const [userState, dispatchUserState] = useContext(UserContext);
+  const [userState, dispatchUserState] = useContext(UserContext);
 
-    useEffect(() => {
-        if (localStorage.token && userState.id !== '' && userState.loggedIn === true) {
-            (async () => {
-                try {
-                    console.log(userState);
-                    const response = await axios.get(`${server}/users/${userState.id}?populate=journalEntries`);
-                    console.log(response);
-                } catch (error) {
-                    console.log(error)
-                }
-            })()
-        }
-    }, [userState])
+  useEffect(() => {
+    {
+      if (userState.loggedIn) {
+        (async () => {
+          try {
+            const response = await fetch(
+              `${server}/users/${userState.id}/entries`
+            );
+            const data = await response.json();
+            console.log(data);
+            dispatchUserState({
+              type: "LOAD_ENTRIES",
+              payload: data.entries,
+            });
+          } catch (error) {
+            console.log(error);
+          }
+        })();
+      }
+    }
+  }, [userState.loggedIn]);
 
-    return (
-        <div>
-            <Layout>
-                <div>
-                    {userState.journalEntries.map((entry) => {
-                        return (
-                            <div>
-                                <h1>{entry.title}</h1>
-                                <h1>{entry.content}</h1>
-                            </div>
-                        )
-                    })}
-                </div>
-            </Layout>
-        </div>
-    );
+  return (
+    <Layout>
+      <AddEntryForm />
+      <ul>
+        {userState.journalEntries.length > 0 &&
+          userState.journalEntries.map((entry) => {
+            return <EntryCard key={entry._id} entry={entry} />;
+          })}
+      </ul>
+    </Layout>
+  );
 }
 
 export default Entries;
