@@ -5,29 +5,31 @@ import { server } from "../../setting";
 import GeoLocate from "./GeoLocate";
 import { UserContext } from "../../context/ContextStore";
 
-export default function LocationSearch() {
+export default function LocationSearch(props) {
   const [userState] = useContext(UserContext);
-  const [locations, updateLocations] = useState([]);
   const [query, setQuery] = useState("");
 
-  // ======= GEOLOCATION ========= //
+  const [locations, updateLocations] = props.controller;
 
   const handleChange = (e) => {
     setQuery(e.target.value);
-    console.log(userState.location);
   };
+
   const handleSubmit = async () => {
     try {
-      const response = axios.get(`${server}/locations?input=${query}`);
+      const latitude = userState.location.lat || 45;
+      const longitude = userState.location.lon || 74;
+      const radius = props.radius || 2000;
+      const response = axios.get(
+        `${server}/locations?input=${query}&latitude=${latitude}&longitude=${longitude}&radius=${radius}`
+      );
       const data = await response;
+      console.log("results: ", data);
       updateLocations([...data.data.candidates]);
     } catch (error) {
       console.log(error);
     }
   };
-  useEffect(() => {
-    console.log(userState.location);
-  }, []);
   return (
     <div>
       <GeoLocate />

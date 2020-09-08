@@ -5,7 +5,7 @@ import Canvas from "./components/canvas/Canvas";
 import Entries from "./components/entries/Entries";
 import { BrowserRouter, Route } from "react-router-dom";
 import ContextStore from "./context/ContextStore";
-import LocationSearch from "./components/locationSearch/LocationSearch";
+import TestComponent from "./components/locationSearch/TestComponent";
 
 export default function App() {
   // ROUTES ================================== //
@@ -33,7 +33,7 @@ export default function App() {
     },
     {
       path: "/location",
-      component: LocationSearch,
+      component: TestComponent,
       key: "location",
     },
   ];
