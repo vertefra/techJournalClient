@@ -22,9 +22,10 @@ function ShowEvent(props) {
         })();
     }, []);
     console.log(event.speaker)
+    console.log(event.host)
     return (
         <Layout>
-            <div>
+            <div className="ShowPageContainer">
                 <Link to={'/events'}>Back to All Events</Link>
                 {Object.keys(event).length > 0 ? (
                     <div className="ShowEventContainer">
@@ -34,11 +35,11 @@ function ShowEvent(props) {
                             </div>
                             <div className="CardItemAbout">
                                 <h3>About the Event</h3>
-                                {/* <h4>Topic: {event.skill[0]}</h4> */}
+                                <h4>Topic: {event.skill}</h4>
                                 <h4>Description: {event.description}</h4>
                                 <h4>Speaker Info:</h4>
-                                {/* <h4>Name: {event.speaker.name}</h4>
-                            <h4>Title:{event.speaker.title}</h4> */}
+                                <h4>Name: {event.speaker.name}</h4>
+                                <h4>Title:{event.speaker.title}</h4>
                             </div>
                             <div className="CardItemDetails">
                                 <h3>Event Details</h3>
