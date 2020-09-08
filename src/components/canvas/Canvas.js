@@ -9,8 +9,7 @@ function Canvas() {
     const [properties, updateProperties] = useState({
         color: 'rgba(0, 0, 0, 1)',
         size: 5,
-        width: window.innerWidth - 50,
-        height: window.innerHeight - 120
+        tool: 'free'
     })
     const [screenSize, changeSize] = useState({
         width: window.innerWidth - 50,
@@ -38,12 +37,33 @@ function Canvas() {
         contextRef.current = context;
     }, [screenSize])
     const startDrawing = ({ nativeEvent }) => {
-        const { offsetX, offsetY } = nativeEvent;
-        contextRef.current.beginPath()
-        contextRef.current.moveTo(offsetX, offsetY)
-        setIsDrawing(true)
+        contextRef.current.strokeStyle = properties.color;
+        contextRef.current.lineWidth = properties.size;
+        if (properties.tool === 'straight') {
+            const { offsetX, offsetY } = nativeEvent;
+            contextRef.current.beginPath()
+            contextRef.current.moveTo(offsetX, offsetY)
+        }
+        if (properties.tool === 'free') {
+            const { offsetX, offsetY } = nativeEvent;
+            contextRef.current.beginPath()
+            contextRef.current.moveTo(offsetX, offsetY)
+            setIsDrawing(true)
+        }
     }
-    const stopDrawing = () => {
+    const stopDrawing = ({ nativeEvent }) => {
+        if (properties.tool === 'straight') {
+            const { offsetX, offsetY } = nativeEvent;
+            contextRef.current.lineTo(offsetX, offsetY);
+            contextRef.current.stroke();
+            contextRef.current.closePath()
+        }
+        if (properties.tool === 'free') {
+            contextRef.current.closePath()
+            setIsDrawing(false)
+        }
+    }
+    const stopAll = () => {
         contextRef.current.closePath()
         setIsDrawing(false)
     }
@@ -54,8 +74,6 @@ function Canvas() {
         const { offsetX, offsetY } = nativeEvent;
         contextRef.current.lineCap = 'round';
         contextRef.current.lineJoin = 'round'
-        contextRef.current.strokeStyle = properties.color;
-        contextRef.current.lineWidth = properties.size;
         contextRef.current.lineTo(offsetX, offsetY);
         contextRef.current.stroke();
     }
@@ -67,10 +85,15 @@ function Canvas() {
                 <label>Size</label>
                 <input type='range' min={1} max={300} name='size' value={properties.size} onChange={handlePropertyChange} />
                 <input type='color' name='color' value={properties.color} onChange={handlePropertyChange} />
+                <select name='tool' value={properties.tool} onChange={handlePropertyChange}>
+                    <option value='free'>Free</option>
+                    <option value='straight'>Straight</option>
+                </select>
             </div>
             <canvas
                 onMouseDown={startDrawing}
                 onMouseUp={stopDrawing}
+                onMouseOut={stopAll}
                 onMouseMove={draw}
                 ref={canvasRef}
             />

@@ -1,13 +1,12 @@
 import React from "react";
-import Dashboard from "./components/Dashoboard";
+import Dashboard from "./components/dashboard/Dashoboard";
 import LoginPage from "./components/login/LoginPage";
 import Canvas from "./components/canvas/Canvas";
 import Entries from "./components/entries/Entries";
 import { BrowserRouter, Route } from "react-router-dom";
 import ContextStore from "./context/ContextStore";
 import Events from "./components/events/Events";
-import ShowEvent from "./components/events/showEvent/ShowEvent";
-import "./components/animations.css";
+import ShowEvent from "./components/events/showEvent/ShowEvent"
 import UserEvents from "./components/userEvents/UserEvents";
 
 export default function App() {
