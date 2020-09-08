@@ -17,6 +17,10 @@ const defaultUserState = {
   eventsWillAttend: [],
   myCanvasProject: [],
   isLogged: "",
+  location: {
+    lat: "",
+    lon: "",
+  },
 };
 
 // ====== ContextStore ======================= //
