@@ -1,8 +1,9 @@
 import React, { useContext, useEffect } from "react";
 import { withRouter } from "react-router-dom"
 import { UserContext } from "../../context/ContextStore";
-import axios from 'axios'
-import './layout.css'
+import axios from 'axios';
+import './layout.css';
+const server = "https://techjournalserver.herokuapp.com";
 
 function Layout(props) {
     const [userState, dispatchUserState] = useContext(UserContext);
@@ -22,7 +23,7 @@ function Layout(props) {
         console.log(userIdentification);
         (async () => {
             try {
-                const response = await axios.get(`http://localhost:3001/users/${userIdentification.id}`);
+                const response = await axios.get(`${server}/users/${userIdentification.id}`);
                 console.log(response);
                 dispatchUserState({ type: "SET_ID", payload: response.data._id });
                 dispatchUserState({ type: "SET_NAME", payload: response.data.name });
