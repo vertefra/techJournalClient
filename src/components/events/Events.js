@@ -32,7 +32,9 @@ function Events(props) {
                 <h1>All Events</h1>
                 {allEvents.length > 0 && allEvents.map(event => {
                     return (
-                        <CardEvent event={event} />
+                        <div>
+                            <CardEvent event={event} />
+                        </div>
                     );
                 })}
             </div>
