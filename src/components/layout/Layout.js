@@ -19,15 +19,17 @@ function Layout(props) {
         }
     };
     useEffect(() => {
-        const userIdentification = parseJwt(localStorage.token)
-        console.log(userIdentification);
+        if (!localStorage.token) {
+            return
+        }
+        const userIdentification = parseJwt(localStorage.token);
         (async () => {
             try {
                 const response = await axios.get(`${server}/users/${userIdentification.id}`);
-                console.log(response);
                 dispatchUserState({ type: "SET_ID", payload: response.data._id });
                 dispatchUserState({ type: "SET_NAME", payload: response.data.name });
                 dispatchUserState({ type: "SET_EMAIL", payload: response.data.email });
+                dispatchUserState({ type: "SET_LOGGEDIN", payload: true });
             } catch (error) {
                 console.log(error)
             }

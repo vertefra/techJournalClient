@@ -11,12 +11,11 @@ const defaultUserState = {
   id: "",
   name: "",
   email: "",
-  password: "",
   journalEntries: [],
   createdEvents: [],
   eventsWillAttend: [],
   myCanvasProject: [],
-  isLogged: "",
+  loggedIn: false,
 };
 
 // ====== ContextStore ======================= //
