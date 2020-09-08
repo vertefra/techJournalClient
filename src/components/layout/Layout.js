@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { withRouter } from "react-router-dom"
+import { withRouter } from "react-router-dom";
 import { UserContext } from "../../context/ContextStore";
 import axios from 'axios';
 import './layout.css';
@@ -9,15 +9,15 @@ function Layout(props) {
     const [userState, dispatchUserState] = useContext(UserContext);
     const handleLogout = () => {
         localStorage.clear();
-        props.history.push('/login')
-    }
+        props.history.push("/login");
+    };
     const parseJwt = (token) => {
         try {
-            return JSON.parse(atob(token.split('.')[1]));
+            return JSON.parse(atob(token.split(".")[1]));
         } catch (e) {
             return null;
         }
-    };
+    }
     useEffect(() => {
         if (!localStorage.token) {
             return

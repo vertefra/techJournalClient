@@ -5,6 +5,7 @@
     font-weight: 400;
     box-sizing: border-box;
 }
+<<<<<<< HEAD
 .loginBody {
     background-image: url('../../images//stripesBackground.jpg');
     background-size: cover;
@@ -12,12 +13,16 @@
     height: 100vh;
     min-width: 700px;
 }
+=======
+
+>>>>>>> d28372975c459978a585432f0559e4ed106baed7
 .pageContent {
     width: 100%;
     margin: calc(40vh - 140px) 0;
     display: flex;
     justify-content: center;
 }
+
 .pageItem {
     width: 300px;
     background-color: rgba(255, 255, 255, .7);
@@ -25,13 +30,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    box-shadow: 0 1px 2px 0 rgba(60,64,67,.30), 0 2px 6px 2px rgba(60,64,67,.15);
+    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .30), 0 2px 6px 2px rgba(60, 64, 67, .15);
     border-radius: 8px;
     font-size: 22px;
 }
+
 .title {
     text-align: center;
 }
+<<<<<<< HEAD
 .orTitle {
     background-color: rgba(255, 255, 255, .7);
     height: 40px;
@@ -39,6 +46,9 @@
     width: 50px;
     border-radius: 8px;
 }
+=======
+
+>>>>>>> d28372975c459978a585432f0559e4ed106baed7
 .or {
     height: 200px;
     width: 10%;
@@ -48,6 +58,7 @@
     align-items: center;
     justify-content: center;
 }
+
 .loginForm {
     width: 90%;
     height: 100%;
@@ -55,6 +66,7 @@
     flex-direction: column;
     justify-content: space-between;
 }
+
 input {
     width: 100%;
     height: 20px;
