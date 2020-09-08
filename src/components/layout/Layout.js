@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom"
 import { UserContext } from "../../context/ContextStore";
 import axios from 'axios';
 import './layout.css';
-const server = "https://techjournalserver.herokuapp.com";
+import { server } from "../../setting";
 
 function Layout(props) {
     const [userState, dispatchUserState] = useContext(UserContext);
@@ -45,6 +45,9 @@ function Layout(props) {
                     </div>
                     <div className='navItem'>
                         <a className='itemText' href='/entries'>Entries</a>
+                    </div>
+                    <div className='navItem'>
+                        <a className='itemText' href='/events'>Events</a>
                     </div>
                     <div className='navItem'>
                         <a className='itemText' href='/canvas'>Canvas</a>
