@@ -6,11 +6,14 @@ import EntryCard from "./EntryCard";
 import { server } from "../../setting";
 function Entries(props) {
   const [userState, dispatchUserState] = useContext(UserContext);
-  const [entries, updateEntries] = useState([]);
+  const [entries, updateEntries] = useState({
+    loaded: false,
+    entriesArray: [],
+  });
 
   useEffect(() => {
     {
-      if (userState.loggedIn) {
+      if (userState.loggedIn && entries.loaded === false) {
         (async () => {
           try {
             const response = await fetch(
@@ -18,27 +21,36 @@ function Entries(props) {
             );
             const data = await response.json();
             console.log(data);
-            updateEntries([...entries, ...data.entries]);
+            updateEntries({
+              ...entries,
+              entriesArray: [...data.entries],
+              loaded: true,
+            });
           } catch (error) {
             console.log(error);
           }
         })();
       }
     }
-  }, [userState.loggedIn]);
+  }, [userState.loggedIn, entries]);
 
   useEffect(() => {
-    console.log("rerender", entries, userState);
+    console.log("rerender", entries.entriesArray);
   }, [entries]);
 
   return (
     <Layout>
-      <AddEntryForm />
+      <AddEntryForm controllers={[entries, updateEntries]} />
       <ul>
-        {entries.length > 0 &&
-          entries.map((entry) => {
-            return <EntryCard key={entry._id} entry={entry} />;
-          })}
+        {entries.entriesArray.map((entry) => {
+          return (
+            <EntryCard
+              key={entry._id}
+              entry={entry}
+              controllers={[entries, updateEntries]}
+            />
+          );
+        })}
       </ul>
     </Layout>
   );
