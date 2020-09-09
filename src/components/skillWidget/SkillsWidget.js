@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import { UserContext } from "../../context/ContextStore";
 import "./skillsWidget.css";
 import { server } from "../../setting";
+import { sortByDate } from "../utils";
 
 export default function SkillsWidget() {
   const [userState, dispatchUserState] = useContext(UserContext);
@@ -63,8 +64,7 @@ export default function SkillsWidget() {
             `${server}/users/${userState.id}/skills`
           );
           const data = await response.json();
-          console.log(data);
-          updateSkills([...skills, ...data]);
+          updateSkills([...data]);
           setLoaded(true);
         } catch (error) {
           console.log(error);
@@ -88,9 +88,6 @@ export default function SkillsWidget() {
     })();
   }, [query]);
 
-  useEffect(() => {
-    console.log("now in skills", skills);
-  });
   return (
     <div className="widgetContainer">
       <header>
@@ -102,20 +99,19 @@ export default function SkillsWidget() {
           value="add skill"
         />
       </header>
+      <h1 className="widgetTitle">My skillset</h1>
       <div className="skillsBoard">
         {skills.map((skill) => {
           return (
-            <div>
-              <div className="skill-tag">
-                {skill.skill}
-                <button
-                  className="deleteTag"
-                  id={skill._id}
-                  onClick={handleDelete}
-                >
-                  x
-                </button>
-              </div>
+            <div className="skill-tag">
+              {skill.skill}
+              <button
+                className="deleteTag"
+                id={skill._id}
+                onClick={handleDelete}
+              >
+                x
+              </button>
             </div>
           );
         })}
