@@ -1,0 +1,14 @@
+.map {
+  width: 80%;
+  margin: 0 auto;
+  height: 60vh;
+  border: 1px solid black;
+}
+
+.google-map {
+  z-index: 0;
+}
+
+.pinLabel {
+  font-size: 18px;
+}

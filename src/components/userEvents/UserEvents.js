@@ -20,7 +20,6 @@ function UserEvents(props) {
                     try {
                         const response = await axios.get(`${server}/users/${userState.id}/events?events=createdEvents`);
                         console.log(response);
-                        // dispatchUserState({ type: "LOAD_EVENTS", payload: response.data });
                         updateEvents({ ...events, eventsArr: [...response.data], loaded: true });
                     } catch (error) {
                         console.log(error);
