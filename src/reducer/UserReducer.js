@@ -48,6 +48,12 @@ const UserReducer = (state, action) => {
         createdEvents: [...state.createdEvents, ...action.payload],
       };
 
+    case "ADD_EVENT":
+      return {
+        ...state,
+        createdEvents: [...state.createdEvents, ...action.payload]
+      }
+
     default:
       return state;
   }
