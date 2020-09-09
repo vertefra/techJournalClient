@@ -64,6 +64,7 @@ function Canvas() {
         }
         if (properties.tool === 'rectangle') {
             console.log(contextRef.current)
+            contextRef.current.rect()
         }
         if (properties.tool === 'free') {
             contextRef.current.closePath()
