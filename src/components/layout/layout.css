@@ -38,6 +38,7 @@
     align-items: center;
     justify-content: center;
     border-radius: 3px;
+    outline: none;
 }
 
 .itemText {
@@ -51,6 +52,7 @@
     height: 100%;
     text-align: center;
     line-height: 38px;
+    outline: none;
 }
 
 .itemText:hover {

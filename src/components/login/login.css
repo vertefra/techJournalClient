@@ -5,7 +5,7 @@
     box-sizing: border-box;
 }
 .loginBody {
-    background-image: url('../../images//stripesBackground.jpg');
+    background-image: url('../../images/stripesBackground.jpg');
     background-size: cover;
     background-position: right;
     height: 100vh;
@@ -70,4 +70,11 @@ input {
     border: 1px solid rgb(200, 200, 200);
     border-radius: 5px;
     outline: none;
+}
+input[type=submit] {
+    background-color: rgb(247, 242, 255);
+    color: rgb(0, 0, 0);
+}
+input[type=submit]:hover {
+    cursor: pointer;
 }

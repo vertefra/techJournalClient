@@ -1,9 +1,9 @@
 .dashboardBody {
     height: 100vh;
     width: 100%;
-    background-image: url('../../images//stripesBackground4.jpg');
+    background-image: url('../../images/stripesBackground4.jpg');
     background-size: cover;
-    background-position: right;
+    background-position: bottom right;
 }
 .dbFlex {
     display: flex;
