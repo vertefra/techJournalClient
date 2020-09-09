@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import { UserContext } from "../../context/ContextStore";
 import "./skillsWidget.css";
 import { server } from "../../setting";
+import { sortByDate } from "../utils";
 
 export default function SkillsWidget() {
   const [userState, dispatchUserState] = useContext(UserContext);

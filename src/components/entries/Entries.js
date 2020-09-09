@@ -4,6 +4,7 @@ import Layout from "../layout/Layout";
 import AddEntryForm from "./AddEntryForm";
 import EntryCard from "./EntryCard";
 import { server } from "../../setting";
+import { sortByDate } from "../utils";
 function Entries(props) {
   const [userState, dispatchUserState] = useContext(UserContext);
   const [entries, updateEntries] = useState({
@@ -43,7 +44,7 @@ function Entries(props) {
     <Layout>
       <AddEntryForm controllers={[entries, updateEntries]} />
       <ul>
-        {entries.entriesArray.map((entry) => {
+        {sortByDate(entries.entriesArray).map((entry) => {
           return (
             <EntryCard
               key={entry._id}
