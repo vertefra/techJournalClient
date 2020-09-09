@@ -64,7 +64,6 @@ export default function SkillsWidget() {
             `${server}/users/${userState.id}/skills`
           );
           const data = await response.json();
-          console.log(data);
           updateSkills([...data]);
           setLoaded(true);
         } catch (error) {
@@ -89,9 +88,6 @@ export default function SkillsWidget() {
     })();
   }, [query]);
 
-  useEffect(() => {
-    console.log("now in skills", skills);
-  });
   return (
     <div className="widgetContainer">
       <header>
@@ -107,17 +103,15 @@ export default function SkillsWidget() {
       <div className="skillsBoard">
         {skills.map((skill) => {
           return (
-            <div>
-              <div className="skill-tag">
-                {skill.skill}
-                <button
-                  className="deleteTag"
-                  id={skill._id}
-                  onClick={handleDelete}
-                >
-                  x
-                </button>
-              </div>
+            <div className="skill-tag">
+              {skill.skill}
+              <button
+                className="deleteTag"
+                id={skill._id}
+                onClick={handleDelete}
+              >
+                x
+              </button>
             </div>
           );
         })}
