@@ -8,27 +8,26 @@ import CreateEvent from './createEvent/CreateEvent';
 
 function UserEvents(props) {
     const [userState, dispatchUserState] = useContext(UserContext);
-    const [eventsLoaded, updateEventsLoaded] = useState({
+    const [events, updateEvents] = useState({
         loaded: false,
-        createdEvents: []
     });
 
     useEffect(() => {
         {
-            if (userState.loggedIn && eventsLoaded.loaded === false) {
+            if (userState.loggedIn && events.loaded === false) {
                 (async () => {
                     try {
                         const response = await axios.get(`${server}/users/${userState.id}/events?events=createdEvents`);
                         // console.log(response);
                         dispatchUserState({ type: "LOAD_EVENTS", payload: response.data });
-                        updateEventsLoaded({ loaded: true });
+                        updateEvents({ loaded: true });
                     } catch (error) {
                         console.log(error);
                     }
                 })();
             }
         }
-    }, [userState.loggedIn, eventsLoaded]);
+    }, [userState.loggedIn, events]);
 
     return (
         <Layout>
@@ -37,7 +36,7 @@ function UserEvents(props) {
                 <h2>All User Events</h2>
                 {userState.createdEvents.length > 0 && userState.createdEvents.map((event) => {
                     return (
-                        <UserCardEvent key={event._id} event={event} controllers={[eventsLoaded, updateEventsLoaded]} />
+                        <UserCardEvent key={event._id} event={event} controllers={[events, updateEvents]} />
                     );
                 })}
             </div>

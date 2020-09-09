@@ -5,10 +5,10 @@ import { server } from '../../../setting';
 
 
 function UserCardEvent(props) {
-    const event = props.event;
-    const [eventsLoaded, updateEventsLoaded] = props.controllers;
+    // const event = props.event;
     const [userState, dispatchUserState] = useContext(UserContext);
-    const [events, updateEvents] = useState({});
+    const [event, updateEvent] = useState({ ...props.event });
+    const [events, updateEvents] = props.controllers;
 
 
     const handleDelete = (event) => {
@@ -16,8 +16,7 @@ function UserCardEvent(props) {
             try {
                 const response = await axios.delete(`${server}/events/${event.target.id}?user_id=${userState.id}`)
                 console.log(response);
-                updateEvents({ ...events });
-                updateEventsLoaded({ loaded: false });
+                updateEvents({ ...events, loaded: false });
             } catch (error) {
                 console.log(error);
             }
