@@ -15,10 +15,23 @@
 }
 
 
+.entriesWrapper {
+    background-image: url('/images/stripesBackground.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    padding: 50px 0;
+
+}
+
+
 /* ENTRY CARD */
 
 .entryCard {
+    z-index: -1;
     min-height: 205px;
+    display: block;
     padding: 10px;
     justify-content: space-between;
     width: 600px;
@@ -32,10 +45,21 @@
     animation: fadeIn 2s ease forwards;
 }
 
-.hor {
+.horizontal {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.secondContainer {
+    width: 60%;
+}
+
+footer {
     display: flex;
     justify-content: space-around;
-    width: 100%;
+    align-items: center;
 }
 
 .cardTitle {
@@ -85,4 +109,8 @@
     border: none;
     font-weight: 700;
     border-radius: 3px;
+}
+
+.entryDate {
+    font-size: 10px;
 }
