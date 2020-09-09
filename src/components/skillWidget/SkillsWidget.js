@@ -64,7 +64,6 @@ export default function SkillsWidget() {
             `${server}/users/${userState.id}/skills`
           );
           const data = await response.json();
-          console.log(data);
           updateSkills([...data]);
           setLoaded(true);
         } catch (error) {
@@ -89,9 +88,6 @@ export default function SkillsWidget() {
     })();
   }, [query]);
 
-  useEffect(() => {
-    console.log("now in skills", skills);
-  });
   return (
     <div className="widgetContainer">
       <header>

@@ -1,7 +1,8 @@
-import React, { useContext, useState, useEffect } from "react";
-import { server, dateFormat } from "../../setting";
 import { UserContext } from "../../context/ContextStore";
+import React, { useContext, useState } from "react";
+import { server } from "../../setting";
 import SkillsWidget from "../skillWidget/SkillsWidget";
+import { formatDate, entryFormat } from "../utils";
 
 export default function EntryCard(props) {
   const [userState, dispatchUserState] = useContext(UserContext);
@@ -10,6 +11,9 @@ export default function EntryCard(props) {
   });
   const [entries, updateEntries] = props.controllers;
   const [entry, updateEntry] = useState({ ...props.entry });
+
+  const formattedDate = formatDate(entry.createdAt, entryFormat);
+  console.log(formattedDate);
 
   const handleDelete = (e) => {
     (async () => {
@@ -68,6 +72,7 @@ export default function EntryCard(props) {
 
   return (
     <li key={entry._id} className="entryCard">
+      {/* input title */}
       <input
         className="cardTitle"
         name="title"
@@ -75,42 +80,48 @@ export default function EntryCard(props) {
         readOnly={!mode.editMode}
         onChange={handleChange}
       />
-      <hr />
-      <div className="hor">
-        <textarea
-          className={`cardContent ${mode.editMode ? "editField" : "readOnly"}`}
-          name="content"
-          value={entry.content}
-          readOnly={!mode.editMode}
-          onChange={handleChange}
-        />
+      {/* end inpu title */}
+      <div className="horizontal">
+        {/* Text area */}
+        <div className="secondContainer">
+          <textarea
+            className={`cardContent ${
+              mode.editMode ? "editField" : "readOnly"
+            }`}
+            name="content"
+            value={entry.content}
+            readOnly={!mode.editMode}
+            onChange={handleChange}
+          />
+          {/* end Text area */}
+          <footer>
+            <button id={entry._id} onClick={handleDelete} className="darkImg">
+              X
+            </button>
+            <h2 className="entryDate">{formattedDate}</h2>
+            {!mode.editMode ? (
+              <button className="darkImg">
+                <img
+                  src="./icons/edit.svg"
+                  name="edit"
+                  onClick={toggleEdit}
+                  id={entry._id}
+                />
+              </button>
+            ) : (
+              <button className="darkImg" id={entry._id}>
+                <img
+                  src="./icons/save.svg"
+                  name="save"
+                  onClick={toggleEdit}
+                  id={entry._id}
+                />
+              </button>
+            )}
+          </footer>
+        </div>
         <SkillsWidget />
       </div>
-      <footer>
-        <button id={entry._id} onClick={handleDelete} className="darkImg">
-          X
-        </button>
-        <h2>{entry.createdAt}</h2>
-        {!mode.editMode ? (
-          <button className="darkImg">
-            <img
-              src="./icons/edit.svg"
-              name="edit"
-              onClick={toggleEdit}
-              id={entry._id}
-            />
-          </button>
-        ) : (
-          <button className="darkImg" id={entry._id}>
-            <img
-              src="./icons/save.svg"
-              name="save"
-              onClick={toggleEdit}
-              id={entry._id}
-            />
-          </button>
-        )}
-      </footer>
     </li>
   );
 }
