@@ -50,10 +50,10 @@ function Layout(props) {
                         <a className='itemText' href='/events'>Events</a>
                     </div>
                     <div className='navItem'>
-                        <a className='itemText' href='/canvas'>Canvas</a>
+                        <a className='itemText' href='/events'>All Events</a>
                     </div>
                     <div className='navItem'>
-                        <a className='itemText' href='/events'>All Events</a>
+                        <a className='itemText' href='/canvas'>Canvas</a>
                     </div>
                     <div className='navItem'>
                         <button className='itemText' onClick={handleLogout}>Log Out</button>
