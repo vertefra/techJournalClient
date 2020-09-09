@@ -37,6 +37,7 @@ export default function EntryCard(props) {
         <button id={entry._id} onClick={handleDelete}>
           delete
         </button>
+        <h2>{entry.createdAt}</h2>
         <button>edit</button>
       </footer>
     </li>
