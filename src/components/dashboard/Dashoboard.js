@@ -38,7 +38,7 @@ function Dashboard(props) {
             <h2>{userState.email}</h2>
           </div>
           <div className='dbEntries'>
-            <h1>Notes</h1>
+            <h1>Recent Entries</h1>
             {entries.map((entry) => {
               return (
                 <div key={entry._id}>
