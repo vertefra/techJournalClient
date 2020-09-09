@@ -12,7 +12,7 @@ function UserCardEvent(props) {
     const handleDelete = (event) => {
         (async () => {
             try {
-                const response = await axios.delete(`${server}/users/${userState.id}/events/${event.target.id}`)
+                const response = await axios.delete(`${server}/events/${event.target.id}?user_id=${userState.id}`)
                 console.log(response);
                 updateEvents({ ...events });
             } catch (error) {
