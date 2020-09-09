@@ -4,6 +4,7 @@ import Layout from "../../layout/Layout";
 import { Link } from "react-router-dom";
 import "./showEvent.css";
 import { server } from '../../../setting';
+import WillAttend from '../willAttend/WillAttend';
 
 function ShowEvent(props) {
     // const [userState, dispatchUserState] = useContext(UserContext);
@@ -53,6 +54,7 @@ function ShowEvent(props) {
                                 <h4>Email: {event.host.email}</h4>
                                 <h4>Phone Number: {event.host.phoneNumber}</h4>
                             </div>
+                            <WillAttend event={event} />
                         </div>
                     </div>
                 ) : (

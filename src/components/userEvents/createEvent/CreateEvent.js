@@ -11,26 +11,59 @@ function CreateEvent(props) {
         title: '',
         date: '',
         description: '',
-        location: '',
-        topics: [],
-        host: {},
-        speaker: {},
+        location: ''
     });
 
-    const handleChange = (event) => {
-        updateEvent({ ...event, [event.target.id]: event.target.value });
+    const [topics, updateTopics] = useState({
+        skill: ''
+    });
+
+    const [host, updateHost] = useState({
+        hostName: '',
+        hostTitle: '',
+        hostEmail: '',
+        hostPhoneNumber: ''
+    });
+
+    const [speaker, updateSpeaker] = useState({
+        speakerName: '',
+        speakerTitle: ''
+    });
+
+    const handleChange = (e) => {
+        updateEvent({ ...event, [e.target.id]: e.target.value });
     };
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
+    const handleChangeTopics = (event) => {
+        console.log(event.target.value)
+        updateTopics({ ...topics, skill: event.target.value });
+        console.log(topics)
+    }
+
+    const handleChangeHost = (event) => {
+        console.log(host)
+        updateHost({ ...host, [event.target.id]: event.target.value });
+    }
+
+    const handleChangeSpeaker = (event) => {
+        console.log(speaker)
+        updateSpeaker({ ...speaker, [event.target.id]: event.target.value });
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
         (async () => {
             try {
+                const body = { title: event.title, name: event.name, description: event.description, date: event.date, location: event.location, host: host, speaker: speaker }
                 const response = await axios.post(`${server}/users/${userState.id}/events`, {
-                    ...event,
+                    body,
                 });
                 console.log(response);
-                dispatchUserState({ type: "ADD_EVENT", payload: response.data });
-                updateEvent({ ...event, ...{ title: '', date: '', description: '', location: '', topics: [], host: {}, speaker: {} } })
+                // dispatchUserState({ type: "ADD_EVENT", payload: response.data });
+                updateEvent({ ...event, ...{ title: '', date: '', description: '', location: '' } });
+                updateTopics({ ...topics, ...{ skill: '' } });
+                updateHost({ ...host, ...{ name: '', title: '', email: '', phoneNumber: '' } });
+                updateSpeaker({ ...speaker, ...{ name: '', title: '' } });
             } catch (error) {
                 console.log(error);
             }
@@ -55,7 +88,7 @@ function CreateEvent(props) {
                     <div>
                         <lable htmlFor='date'>Date and Time</lable>
                         <input
-                            type='date'
+                            type='datetime-local'
                             name='date'
                             id='date'
                             value={event.date}
@@ -88,8 +121,8 @@ function CreateEvent(props) {
                             type='text'
                             name='topics'
                             id='topics'
-                            value={event.topics}
-                            onChange={handleChange}
+                            value={topics.skill}
+                            onChange={handleChangeTopics}
                         /><br />
                     </div>
                     <div>
@@ -98,8 +131,8 @@ function CreateEvent(props) {
                             type='text'
                             name='hostName'
                             id='hostName'
-                            value={event.host.name}
-                            onChange={handleChange}
+                            value={host.name}
+                            onChange={handleChangeHost}
                         /><br />
                     </div>
                     <div>
@@ -108,28 +141,29 @@ function CreateEvent(props) {
                             type='text'
                             name='hostTitle'
                             id='hostTitle'
-                            value={event.host.title}
-                            onChange={handleChange}
+                            value={host.title}
+                            onChange={handleChangeHost}
                         /><br />
                     </div>
                     <div>
                         <label htmlFor='hostEmail'>Host Email</label><br />
                         <input
-                            type='text'
+                            type='email'
                             name='hostEmail'
                             id='hostEmail'
-                            value={event.host.email}
-                            onChange={handleChange}
+                            value={host.email}
+                            placeholder='example@gmail.com'
+                            onChange={handleChangeHost}
                         /><br />
                     </div>
                     <div>
                         <label htmlFor='hostPhoneNumber'>Host Phone Number</label><br />
                         <input
-                            type='text'
+                            type='number'
                             name='hostPhoneNumber'
                             id='hostPhoneNumber'
-                            value={event.host.phoneNumber}
-                            onChange={handleChange}
+                            value={host.phoneNumber}
+                            onChange={handleChangeHost}
                         /><br />
                     </div>
                     <div>
@@ -138,8 +172,8 @@ function CreateEvent(props) {
                             type='text'
                             name='speakerName'
                             id='speakerName'
-                            value={event.speaker.Name}
-                            onChange={handleChange}
+                            value={speaker.Name}
+                            onChange={handleChangeSpeaker}
                         /><br />
                     </div>
                     <div>
@@ -148,8 +182,8 @@ function CreateEvent(props) {
                             type='text'
                             name='speakerTitle'
                             id='speakerTitle'
-                            value={event.speaker.title}
-                            onChange={handleChange}
+                            value={speaker.title}
+                            onChange={handleChangeSpeaker}
                         /><br />
                     </div>
                     <input type="submit" value="Create a New Event" />
