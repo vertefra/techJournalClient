@@ -152,6 +152,7 @@ function CreateEvent(props) {
                             name='hostEmail'
                             id='hostEmail'
                             value={host.email}
+                            placeholder='example@gmail.com'
                             onChange={handleChangeHost}
                         /><br />
                     </div>
