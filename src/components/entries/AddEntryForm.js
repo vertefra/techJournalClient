@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import "./addEntry.css";
 import axios from "axios";
 import { server } from "../../setting";
@@ -10,6 +10,8 @@ export default function AddEntryForm(props) {
     title: "",
     content: "",
   });
+
+  const [entries, updateEntries] = props.controllers;
 
   const handleChange = (e) => {
     updateEntry({ ...entry, [e.target.name]: e.target.value });
@@ -24,7 +26,11 @@ export default function AddEntryForm(props) {
           ...entry,
         });
         const data = await response;
-        console.log(data);
+        console.log("IM looking for you", data);
+        updateEntries({
+          ...entries,
+          loaded: false,
+        });
         updateEntry({ ...entry, ...{ title: "", content: "" } });
       } catch (error) {
         console.log(error);

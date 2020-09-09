@@ -3,10 +3,11 @@ import { server } from "../../setting";
 import { UserContext } from "../../context/ContextStore";
 
 export default function EntryCard(props) {
-  const entry = props.entry;
   const [userState, dispatchUserState] = useContext(UserContext);
+  const [entries, updateEntries] = props.controllers;
+  const entry = props.entry;
+
   const handleDelete = (e) => {
-    const id = e.target.id;
     (async () => {
       try {
         const response = await fetch(
@@ -17,11 +18,10 @@ export default function EntryCard(props) {
         );
         const data = await response.json();
         console.log(data);
-        console.log("ID before filtering ", id);
-        const newEntries = userState.journalEntries.filter(
-          (entry) => entry.id.toString() !== id.toString()
-        );
-        dispatchUserState({ type: "LOAD_ENTRIES", payload: newEntries });
+        updateEntries({
+          ...entries,
+          loaded: false,
+        });
       } catch (error) {
         console.log(error);
       }
