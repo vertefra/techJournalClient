@@ -6,12 +6,13 @@ import { UserContext } from '../../../context/ContextStore';
 
 function WillAttend(props) {
     const [userState, dispatchUserState] = useContext(UserContext);
-    const [event, updateEvent] = useState({});
+    const [event, updateEvent] = useState({ ...props.event });
     const [eventsWillAttend, updateEventsWillAttend] = useState({
         eventsWillAttend: []
     });
 
     const handleEventsWillAttend = (event) => {
+        console.log(event.target.id)
         {
             if (userState.loggedIn) {
                 (async () => {

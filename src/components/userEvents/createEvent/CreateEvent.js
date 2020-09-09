@@ -19,31 +19,44 @@ function CreateEvent(props) {
     });
 
     const [host, updateHost] = useState({
-        name: '',
-        title: '',
-        email: '',
-        phoneNumber: ''
+        hostName: '',
+        hostTitle: '',
+        hostEmail: '',
+        hostPhoneNumber: ''
     });
 
     const [speaker, updateSpeaker] = useState({
-        name: '',
-        title: ''
+        speakerName: '',
+        speakerTitle: ''
     });
 
-    const handleChange = (event) => {
-        updateEvent({ ...event, [event.target.id]: event.target.value });
-        updateTopics({ ...topics, [event.target.id]: event.target.value });
-        updateHost({ ...host, [event.target.id]: event.target.value });
-        updateSpeaker({ ...speaker, [event.target.id]: event.target.value });
+    const handleChange = (e) => {
+        updateEvent({ ...event, [e.target.id]: e.target.value });
     };
 
+    const handleChangeTopics = (event) => {
+        console.log(event.target.value)
+        updateTopics({ ...topics, skill: event.target.value });
+        console.log(topics)
+    }
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
+    const handleChangeHost = (event) => {
+        console.log(host)
+        updateHost({ ...host, [event.target.id]: event.target.value });
+    }
+
+    const handleChangeSpeaker = (event) => {
+        console.log(speaker)
+        updateSpeaker({ ...speaker, [event.target.id]: event.target.value });
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
         (async () => {
             try {
+                const body = { title: event.title, name: event.name, description: event.description, date: event.date, location: event.location, host: host, speaker: speaker }
                 const response = await axios.post(`${server}/users/${userState.id}/events`, {
-                    ...event,
+                    body,
                 });
                 console.log(response);
                 // dispatchUserState({ type: "ADD_EVENT", payload: response.data });
@@ -75,7 +88,7 @@ function CreateEvent(props) {
                     <div>
                         <lable htmlFor='date'>Date and Time</lable>
                         <input
-                            type='date'
+                            type='datetime-local'
                             name='date'
                             id='date'
                             value={event.date}
@@ -109,7 +122,7 @@ function CreateEvent(props) {
                             name='topics'
                             id='topics'
                             value={topics.skill}
-                            onChange={handleChange}
+                            onChange={handleChangeTopics}
                         /><br />
                     </div>
                     <div>
@@ -119,7 +132,7 @@ function CreateEvent(props) {
                             name='hostName'
                             id='hostName'
                             value={host.name}
-                            onChange={handleChange}
+                            onChange={handleChangeHost}
                         /><br />
                     </div>
                     <div>
@@ -129,27 +142,27 @@ function CreateEvent(props) {
                             name='hostTitle'
                             id='hostTitle'
                             value={host.title}
-                            onChange={handleChange}
+                            onChange={handleChangeHost}
                         /><br />
                     </div>
                     <div>
                         <label htmlFor='hostEmail'>Host Email</label><br />
                         <input
-                            type='text'
+                            type='email'
                             name='hostEmail'
                             id='hostEmail'
                             value={host.email}
-                            onChange={handleChange}
+                            onChange={handleChangeHost}
                         /><br />
                     </div>
                     <div>
                         <label htmlFor='hostPhoneNumber'>Host Phone Number</label><br />
                         <input
-                            type='text'
+                            type='number'
                             name='hostPhoneNumber'
                             id='hostPhoneNumber'
                             value={host.phoneNumber}
-                            onChange={handleChange}
+                            onChange={handleChangeHost}
                         /><br />
                     </div>
                     <div>
@@ -159,7 +172,7 @@ function CreateEvent(props) {
                             name='speakerName'
                             id='speakerName'
                             value={speaker.Name}
-                            onChange={handleChange}
+                            onChange={handleChangeSpeaker}
                         /><br />
                     </div>
                     <div>
@@ -169,7 +182,7 @@ function CreateEvent(props) {
                             name='speakerTitle'
                             id='speakerTitle'
                             value={speaker.title}
-                            onChange={handleChange}
+                            onChange={handleChangeSpeaker}
                         /><br />
                     </div>
                     <input type="submit" value="Create a New Event" />
