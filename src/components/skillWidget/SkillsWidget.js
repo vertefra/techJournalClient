@@ -64,7 +64,7 @@ export default function SkillsWidget() {
           );
           const data = await response.json();
           console.log(data);
-          updateSkills([...skills, ...data]);
+          updateSkills([...data]);
           setLoaded(true);
         } catch (error) {
           console.log(error);
@@ -102,6 +102,7 @@ export default function SkillsWidget() {
           value="add skill"
         />
       </header>
+      <h1 className="widgetTitle">My skillset</h1>
       <div className="skillsBoard">
         {skills.map((skill) => {
           return (
