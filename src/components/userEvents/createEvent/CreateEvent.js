@@ -12,9 +12,6 @@ function CreateEvent(props) {
         date: '',
         description: '',
         location: '',
-        // topics: [],
-        // host: {},
-        // speaker: {},
     });
 
     const [topics, updateTopics] = useState({
