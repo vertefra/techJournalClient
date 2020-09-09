@@ -47,7 +47,7 @@ function Layout(props) {
                         <a className='itemText' href='/entries'>Entries</a>
                     </div>
                     <div className='navItem'>
-                        <a className='itemText' href='/events'>Events</a>
+                        <a className='itemText' href='/myevents'>My Events</a>
                     </div>
                     <div className='navItem'>
                         <a className='itemText' href='/events'>All Events</a>
