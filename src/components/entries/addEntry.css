@@ -10,7 +10,7 @@
 
 .newEntry textarea {
     width: 100%;
-    height: 300px;
+    height: 150px;
     resize: none;
 }
 
@@ -32,23 +32,57 @@
     animation: fadeIn 2s ease forwards;
 }
 
+.hor {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
 .cardTitle {
     font-size: 30px;
     align-self: flex-start;
     text-transform: capitalize;
     width: 100%;
-    padding: 5px;
+    height: 45px;
+    padding: 10px;
+    border: none;
     border-bottom: solid 2px black;
 }
 
 .cardContent {
-    align-self: stretch;
     margin: 15px;
+    resize: none;
+    min-height: 200px;
+    width: 65%;
+}
+
+.editField {
+    outline-color: purple;
+    padding: 5px;
+}
+
+.readOnly {
+    background-color: whitesmoke;
+    border: none;
+    outline: none;
 }
 
 .entryCard>footer {
     display: flex;
     justify-content: space-between;
-    background-color: red;
     width: 100%;
+    padding: 3px 10px;
+}
+
+.darkImg {
+    background-color: black;
+    padding: 4px;
+    cursor: pointer;
+    width: 38px;
+    height: 38px;
+    color: whitesmoke;
+    font-size: 16px;
+    border: none;
+    font-weight: 700;
+    border-radius: 3px;
 }

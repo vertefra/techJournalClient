@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+* {
+    font-family: 'Varela Round', sans-serif;
+}
 .header {
     background-color: rgb(19, 0, 65);
     width: 100%;
@@ -28,17 +32,18 @@
 .navItem {
     background-color: rgba(255, 255, 255, .15);
     height: 90%;
-    width: 100px;
+    width: 95px;
     margin: 0 4px 0 0;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 3px;
+    outline: none;
 }
 
 .itemText {
     text-decoration: none;
-    font-size: 20px;
+    font-size: 16px;
     color: white;
     padding: 0;
     border: none;
@@ -47,6 +52,7 @@
     height: 100%;
     text-align: center;
     line-height: 38px;
+    outline: none;
 }
 
 .itemText:hover {
