@@ -3,11 +3,13 @@ import { UserContext } from "../../../context/ContextStore";
 import axios from "axios";
 import { server } from '../../../setting';
 
+
 function UserCardEvent(props) {
     const event = props.event;
+    const [eventsLoaded, updateEventsLoaded] = props.controllers;
     const [userState, dispatchUserState] = useContext(UserContext);
     const [events, updateEvents] = useState({});
-    // console.log(event)
+
 
     const handleDelete = (event) => {
         (async () => {
@@ -15,6 +17,7 @@ function UserCardEvent(props) {
                 const response = await axios.delete(`${server}/events/${event.target.id}?user_id=${userState.id}`)
                 console.log(response);
                 updateEvents({ ...events });
+                updateEventsLoaded({ loaded: false });
             } catch (error) {
                 console.log(error);
             }
