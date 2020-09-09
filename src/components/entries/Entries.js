@@ -35,9 +35,9 @@ function Entries(props) {
     }
   }, [userState.loggedIn, entries]);
 
-  useEffect(() => {
-    console.log("rerender", entries.entriesArray);
-  }, [entries]);
+  // useEffect(() => {
+  //   console.log("rerender", entries.entriesArray);
+  // }, [entries]);
 
   return (
     <Layout>
