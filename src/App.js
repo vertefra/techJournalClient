@@ -9,6 +9,7 @@ import Events from "./components/events/Events";
 import ShowEvent from "./components/events/showEvent/ShowEvent";
 import UserEvents from "./components/userEvents/UserEvents";
 import "./components/animations.css";
+import ShowLocationsEvent from "./components/locationSearch/ShowLocationsEvent";
 
 export default function App() {
   // ROUTES ================================== //
@@ -49,6 +50,11 @@ export default function App() {
       path: "/myevents",
       component: UserEvents,
       key: "myevents",
+    },
+    {
+      path: "/locations",
+      component: ShowLocationsEvent,
+      key: "geolocations",
     },
   ];
 

@@ -18,14 +18,21 @@ export default function LocationSearch(props) {
   const handleSubmit = async () => {
     try {
       const latitude = userState.location.lat || 45;
-      const longitude = userState.location.lon || 74;
+      const longitude = userState.location.lon || -74;
       const radius = props.radius || 2000;
-      const response = axios.get(
+      const response = await axios.get(
         `${server}/locations?input=${query}&latitude=${latitude}&longitude=${longitude}&radius=${radius}`
       );
       const data = await response;
-      console.log("results: ", data);
-      updateLocations([...data.data.candidates]);
+      const candidate = data.data.candidates[0];
+      const locObj = {
+        address: candidate.formatted_address,
+        lat: candidate.geometry.location.lat,
+        lng: candidate.geometry.location.lng,
+      };
+      updateLocations({ ...locObj });
+      console.log(locations);
+      setQuery("");
     } catch (error) {
       console.log(error);
     }
