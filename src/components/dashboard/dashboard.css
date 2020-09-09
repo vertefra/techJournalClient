@@ -2,37 +2,55 @@
     width: 0px;
 }
 .dashboardBody {
-    height: 100vh;
     width: 100%;
-    background-image: url('../../images/stripesBackground4.jpg');
+    height: 100vh;
+    padding: 50px 0;
+    background-image: url('../../images/stripesBackground.jpg');
     background-size: cover;
     background-position: bottom right;
-}
-.dbFlex {
+    background-attachment: fixed;
+    background-repeat: no-repeat;
     display: flex;
     justify-content: center;
+    overflow: hidden;
+}
+.dbHeader {
+    text-align: center;
 }
 .dbUserInfo {
     width: 20%;
     height: fit-content;
     min-width: 200px;
-    padding: 10px;
+    text-align: center;
     margin: 20px 5px;
     box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .3), 0 2px 6px 2px rgba(60, 64, 67, .15);
     border-radius: 3px;
-    background-color: rgba(255, 255, 255, .8);
+    /* background-image: url('../../images/stripesBackground3.jpg'); */
+    background-size: cover;
+    background-position: top left;
+    background-color: rgba(255, 255, 255, .95);
+}
+.dbUserCover {
+    padding: 20px 10px;
+    /* background-color: rgba(255, 255, 255, .6); */
+    border-radius: 3px;
 }
 .dbEntries {
     width: 40%;
     min-width: 300px;
-    height: fit-content;
-    max-height: calc(100vh - 230px);
-    padding: 10px;
-    margin: 20px 5px;
-    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .3), 0 2px 6px 2px rgba(60, 64, 67, .15);
-    border-radius: 3px;
-    background-color: rgba(255, 255, 255, .8);
+    height: 100vh;
+    margin: 10px 5px;
     overflow: auto;
+    padding-bottom: 70px;
+}
+.dbEntryItem {
+    background-color: rgb(255, 255, 255);
+    margin: 10px;
+    padding: 10px;
+    border-radius: 3px;
+    height: fit-content;
+    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .3), 0 2px 6px 2px rgba(60, 64, 67, .15);
+    transition: all .3s;
 }
 .dbEvents {
     width: 30%;
@@ -43,10 +61,4 @@
     box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .3), 0 2px 6px 2px rgba(60, 64, 67, .15);
     border-radius: 3px;
     background-color: rgba(255, 255, 255, .8);
-}
-.dbEntryItem {
-    margin: 10px;
-    height: fit-content;
-    overflow: hidden;
-    transition: all .3s;
 }

@@ -44,6 +44,10 @@ function Canvas() {
             contextRef.current.beginPath()
             contextRef.current.moveTo(offsetX, offsetY)
         }
+        if (properties.tool === 'rectangle') {
+            const { offsetX, offsetY } = nativeEvent;
+            contextRef.current.moveTo(offsetX, offsetY)
+        }
         if (properties.tool === 'free') {
             const { offsetX, offsetY } = nativeEvent;
             contextRef.current.beginPath()
@@ -57,6 +61,9 @@ function Canvas() {
             contextRef.current.lineTo(offsetX, offsetY);
             contextRef.current.stroke();
             contextRef.current.closePath()
+        }
+        if (properties.tool === 'rectangle') {
+            console.log(contextRef.current)
         }
         if (properties.tool === 'free') {
             contextRef.current.closePath()
@@ -79,16 +86,29 @@ function Canvas() {
     }
     return (
         <Layout>
-            <div>
-                <label>Height</label>
-                <input type='range' min={1} max={2000} name='height' value={screenSize.height} onChange={handleChangeSize} />
-                <label>Size</label>
-                <input type='range' min={1} max={300} name='size' value={properties.size} onChange={handlePropertyChange} />
-                <input type='color' name='color' value={properties.color} onChange={handlePropertyChange} />
-                <select name='tool' value={properties.tool} onChange={handlePropertyChange}>
-                    <option value='free'>Free</option>
-                    <option value='straight'>Straight</option>
-                </select>
+            <div className='canvasSettings'>
+                <div>
+                    <label className='settingsItem' >Height</label>
+                    <input className='settingsItem' type='range' min={1} max={2000} name='height' value={screenSize.height} onChange={handleChangeSize} />
+                    <label className='settingsItem' >Width</label>
+                    <input className='settingsItem' type='range' min={1} max={2000} name='width' value={screenSize.width} onChange={handleChangeSize} />
+                    <label className='settingsItem' >Brush Size</label>
+                    <input className='settingsItem' type='range' min={.5} max={300} name='size' value={properties.size} onChange={handlePropertyChange} />
+                </div>
+                <div className='flexSettings'>
+                    <div className='flexSettingsItem'>
+                        <label>Brush Color: </label>
+                        <input type='color' name='color' value={properties.color} onChange={handlePropertyChange} />
+                    </div>
+                    <div className='flexSettingsItem'>
+                        <label>Tool: </label>
+                        <select name='tool' value={properties.tool} onChange={handlePropertyChange}>
+                            <option value='free'>Free</option>
+                            <option value='straight'>Straight</option>
+                            <option value='rectangle'>Rectangle</option>
+                        </select>
+                    </div>
+                </div>
             </div>
             <canvas
                 onMouseDown={startDrawing}

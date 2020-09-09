@@ -29,34 +29,34 @@ function Dashboard(props) {
   }, [userState.loggedIn]);
 
   return (
-    <div className="dashboardBody">
-      <Layout>
-        <div className='dbFlex'>
-          <div className='dbUserInfo'>
+    <Layout>
+      <div className="dashboardBody">
+        <div className='dbUserInfo'>
+          <div className='dbUserCover'>
             <h1>{userState.name}</h1>
             <hr />
             <h2>{userState.email}</h2>
           </div>
-          <div className='dbEntries'>
-            <h1>Recent Entries</h1>
-            {entries.map((entry) => {
-              return (
-                <div key={entry._id}>
-                  <hr />
-                  <div className='dbEntryItem'>
-                    <h2>{entry.title}</h2>
-                    <p>{entry.content}</p>
-                  </div>
-                </div>
-              )
-            })}
-          </div>
-          <div className='dbEvents'>
-            <h1>Events</h1>
-          </div>
         </div>
-      </Layout>
-    </div>
+        <div className='dbEntries'>
+          <h1 className='dbEntryItem dbHeader'>Recent Entries</h1>
+          {entries.map((entry) => {
+            return (
+              <div key={entry._id}>
+                <div className='dbEntryItem'>
+                  <h2>{entry.title}</h2>
+                  <hr />
+                  <p>{entry.content}</p>
+                </div>
+              </div>
+            )
+          })}
+        </div>
+        <div className='dbEvents'>
+          <h1 className='dbHeader'>Events</h1>
+        </div>
+      </div>
+    </Layout>
   );
 }
 
