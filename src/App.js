@@ -8,6 +8,7 @@ import ContextStore from "./context/ContextStore";
 import Events from "./components/events/Events";
 import ShowEvent from "./components/events/showEvent/ShowEvent";
 import UserEvents from "./components/userEvents/UserEvents";
+import "./components/animations.css";
 
 export default function App() {
   // ROUTES ================================== //
