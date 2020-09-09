@@ -12,14 +12,34 @@ function CreateEvent(props) {
         date: '',
         description: '',
         location: '',
-        topics: [],
-        host: {},
-        speaker: {},
+        // topics: [],
+        // host: {},
+        // speaker: {},
+    });
+
+    const [topics, updateTopics] = useState({
+        skill: ''
+    });
+
+    const [host, updateHost] = useState({
+        name: '',
+        title: '',
+        email: '',
+        phoneNumber: ''
+    });
+
+    const [speaker, updateSpeaker] = useState({
+        name: '',
+        title: ''
     });
 
     const handleChange = (event) => {
         updateEvent({ ...event, [event.target.id]: event.target.value });
+        updateTopics({ ...topics, [event.target.id]: event.target.value });
+        updateHost({ ...host, [event.target.id]: event.target.value });
+        updateSpeaker({ ...speaker, [event.target.id]: event.target.value });
     };
+
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -29,8 +49,11 @@ function CreateEvent(props) {
                     ...event,
                 });
                 console.log(response);
-                dispatchUserState({ type: "ADD_EVENT", payload: response.data });
-                updateEvent({ ...event, ...{ title: '', date: '', description: '', location: '', topics: [], host: {}, speaker: {} } })
+                // dispatchUserState({ type: "ADD_EVENT", payload: response.data });
+                updateEvent({ ...event, ...{ title: '', date: '', description: '', location: '' } });
+                updateTopics({ ...topics, ...{ skill: '' } });
+                updateHost({ ...host, ...{ name: '', title: '', email: '', phoneNumber: '' } });
+                updateSpeaker({ ...speaker, ...{ name: '', title: '' } });
             } catch (error) {
                 console.log(error);
             }
@@ -88,7 +111,7 @@ function CreateEvent(props) {
                             type='text'
                             name='topics'
                             id='topics'
-                            value={event.topics}
+                            value={topics.skill}
                             onChange={handleChange}
                         /><br />
                     </div>
@@ -98,7 +121,7 @@ function CreateEvent(props) {
                             type='text'
                             name='hostName'
                             id='hostName'
-                            value={event.host.name}
+                            value={host.name}
                             onChange={handleChange}
                         /><br />
                     </div>
@@ -108,7 +131,7 @@ function CreateEvent(props) {
                             type='text'
                             name='hostTitle'
                             id='hostTitle'
-                            value={event.host.title}
+                            value={host.title}
                             onChange={handleChange}
                         /><br />
                     </div>
@@ -118,7 +141,7 @@ function CreateEvent(props) {
                             type='text'
                             name='hostEmail'
                             id='hostEmail'
-                            value={event.host.email}
+                            value={host.email}
                             onChange={handleChange}
                         /><br />
                     </div>
@@ -128,7 +151,7 @@ function CreateEvent(props) {
                             type='text'
                             name='hostPhoneNumber'
                             id='hostPhoneNumber'
-                            value={event.host.phoneNumber}
+                            value={host.phoneNumber}
                             onChange={handleChange}
                         /><br />
                     </div>
@@ -138,7 +161,7 @@ function CreateEvent(props) {
                             type='text'
                             name='speakerName'
                             id='speakerName'
-                            value={event.speaker.Name}
+                            value={speaker.Name}
                             onChange={handleChange}
                         /><br />
                     </div>
@@ -148,7 +171,7 @@ function CreateEvent(props) {
                             type='text'
                             name='speakerTitle'
                             id='speakerTitle'
-                            value={event.speaker.title}
+                            value={speaker.title}
                             onChange={handleChange}
                         /><br />
                     </div>
