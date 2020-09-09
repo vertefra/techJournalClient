@@ -5,7 +5,7 @@ import { server } from "../../setting";
 import { sortByDate } from "../utils";
 
 export default function SkillsWidget() {
-  const [userState, dispatchUserState] = useContext(UserContext);
+  const [userState] = useContext(UserContext);
   const [query, setQuery] = useState("");
   const [skills, updateSkills] = useState([]);
   const [loaded, setLoaded] = useState(false);
