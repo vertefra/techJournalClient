@@ -103,17 +103,15 @@ export default function SkillsWidget() {
       <div className="skillsBoard">
         {skills.map((skill) => {
           return (
-            <div>
-              <div className="skill-tag">
-                {skill.skill}
-                <button
-                  className="deleteTag"
-                  id={skill._id}
-                  onClick={handleDelete}
-                >
-                  x
-                </button>
-              </div>
+            <div className="skill-tag">
+              {skill.skill}
+              <button
+                className="deleteTag"
+                id={skill._id}
+                onClick={handleDelete}
+              >
+                x
+              </button>
             </div>
           );
         })}
