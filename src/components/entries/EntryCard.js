@@ -1,9 +1,12 @@
 import React, { useContext, useState, useEffect } from "react";
-import { server } from "../../setting";
+import { server, dateFormat } from "../../setting";
 import { UserContext } from "../../context/ContextStore";
 
 export default function EntryCard(props) {
   const [userState, dispatchUserState] = useContext(UserContext);
+  const [mode, updateMode] = useState({
+    editMode: false,
+  });
   const [entries, updateEntries] = props.controllers;
   const entry = props.entry;
 
@@ -28,17 +31,35 @@ export default function EntryCard(props) {
     })();
   };
 
+  const toggleEdit = (e) => {
+    console.log(e.target.name);
+    const mode = e.target.name === "edit" ? true : false;
+    updateMode({ ...mode, editMode: mode });
+  };
+
   return (
     <li key={entry._id} className="entryCard">
       <h1 className="cardTitle">{entry.title}</h1>
       <hr />
-      <p className="cardContent">{entry.content}</p>
+      <textarea
+        className={`cardContent ${mode.editMode ? "editField" : "readOnly"}`}
+        value={entry.content}
+        readOnly={!mode.editMode}
+      />
       <footer>
-        <button id={entry._id} onClick={handleDelete}>
-          delete
+        <button id={entry._id} onClick={handleDelete} className="darkImg">
+          X
         </button>
         <h2>{entry.createdAt}</h2>
-        <button>edit</button>
+        {!mode.editMode ? (
+          <button className="darkImg">
+            <img src="./icons/edit.svg" name="edit" onClick={toggleEdit} />
+          </button>
+        ) : (
+          <button className="darkImg">
+            <img src="./icons/save.svg" name="save" onClick={toggleEdit} />
+          </button>
+        )}
       </footer>
     </li>
   );
