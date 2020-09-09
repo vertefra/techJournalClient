@@ -59,7 +59,7 @@ function Login(props) {
             <Layout>
                 <div className='pageContent'>
                     <div className='pageItem loginContainer'>
-                        <h2 className='title'>Login</h2>
+                        <h2 className='title'>Log In</h2>
                         <form className='loginForm' onSubmit={handleLogin}>
                             <div>
                                 <label htmlFor='loginEmail'>Email</label><br />
@@ -73,7 +73,7 @@ function Login(props) {
                         </form>
                     </div>
                     <div className='or'>
-                        <h2 className='orTitle title'>Or</h2>
+                        {/* <h2 className='orTitle title'>Or</h2> */}
                     </div>
                     <div className='pageItem signupContainer'>
                         <h2 className='title'>Sign Up</h2>
