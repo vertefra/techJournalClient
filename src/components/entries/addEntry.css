@@ -32,22 +32,28 @@
     animation: fadeIn 2s ease forwards;
 }
 
+.hor {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
 .cardTitle {
     font-size: 30px;
     align-self: flex-start;
     text-transform: capitalize;
     width: 100%;
     height: 45px;
-    padding: 5px;
+    padding: 10px;
     border: none;
     border-bottom: solid 2px black;
 }
 
 .cardContent {
-    align-self: stretch;
     margin: 15px;
     resize: none;
     min-height: 200px;
+    width: 65%;
 }
 
 .editField {

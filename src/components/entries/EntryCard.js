@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { server, dateFormat } from "../../setting";
 import { UserContext } from "../../context/ContextStore";
+import SkillsWidget from "../skillWidget/SkillsWidget";
 
 export default function EntryCard(props) {
   const [userState, dispatchUserState] = useContext(UserContext);
@@ -75,13 +76,16 @@ export default function EntryCard(props) {
         onChange={handleChange}
       />
       <hr />
-      <textarea
-        className={`cardContent ${mode.editMode ? "editField" : "readOnly"}`}
-        name="content"
-        value={entry.content}
-        readOnly={!mode.editMode}
-        onChange={handleChange}
-      />
+      <div className="hor">
+        <textarea
+          className={`cardContent ${mode.editMode ? "editField" : "readOnly"}`}
+          name="content"
+          value={entry.content}
+          readOnly={!mode.editMode}
+          onChange={handleChange}
+        />
+        <SkillsWidget />
+      </div>
       <footer>
         <button id={entry._id} onClick={handleDelete} className="darkImg">
           X
