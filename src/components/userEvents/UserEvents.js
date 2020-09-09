@@ -26,12 +26,14 @@ function UserEvents(props) {
 
     return (
         <Layout>
-            <h1>All User Events</h1>
-            {userState.createdEvents.length > 0 && userState.createdEvents.map((event) => {
-                return (
-                    <UserCardEvent key={event._id} event={event} />
-                )
-            })}
+            <div className="AllEventsContainer">
+                <h1>All User Events</h1>
+                {userState.createdEvents.length > 0 && userState.createdEvents.map((event) => {
+                    return (
+                        <UserCardEvent key={event._id} event={event} />
+                    )
+                })}
+            </div>
         </Layout>
     );
 }
