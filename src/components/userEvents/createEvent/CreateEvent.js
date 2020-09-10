@@ -62,8 +62,8 @@ function CreateEvent(props) {
                 // dispatchUserState({ type: "ADD_EVENT", payload: response.data });
                 updateEvent({ ...event, ...{ title: '', date: '', description: '', location: '' } });
                 updateTopics({ ...topics, ...{ skill: '' } });
-                updateHost({ ...host, ...{ name: '', title: '', email: '', phoneNumber: '' } });
-                updateSpeaker({ ...speaker, ...{ name: '', title: '' } });
+                updateHost({ ...host, ...{ hostName: '', hostTitle: '', hostEmail: '', hostPhoneNumber: '' } });
+                updateSpeaker({ ...speaker, ...{ speakerName: '', speakerTitle: '' } });
             } catch (error) {
                 console.log(error);
             }
