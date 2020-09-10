@@ -5,6 +5,7 @@ import { server } from "../../../setting";
 import "./createEvent.css";
 import EventLocation from "../eventGeoLocator/EventLocation";
 import Topics from "../topicsComponent/Topics";
+import ShowTopics from "../showTopics/ShowTopics";
 
 function CreateEvent(props) {
   const [userState, dispatchUserState] = useContext(UserContext);
@@ -25,7 +26,8 @@ function CreateEvent(props) {
   });
   // ================================================
 
-  //  this state is handled by the Topics component
+  // this state is handled by the Topics component
+  // and by the showToipic component
 
   const [topics, setTopics] = useState([]);
 
@@ -277,6 +279,7 @@ function CreateEvent(props) {
                   id="location"
                   controller={[location, updateLocation]}
                 />
+                <ShowTopics controller={[topics, setTopics]} />
                 <br />
               </div>
             </div>
