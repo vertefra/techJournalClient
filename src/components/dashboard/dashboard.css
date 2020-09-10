@@ -30,6 +30,22 @@
     background-position: top left;
     background-color: rgba(255, 255, 255, .95);
 }
+.dbSkillBox {
+    display: flex;
+    justify-content: left;
+    flex-wrap: wrap;
+    width: 95%;
+    margin: 5px auto 0 auto;
+}
+.dbSkill {
+    /* background: rgb(255, 190, 228); */
+    font-size: 14px;
+    text-transform: capitalize;
+    padding: 0 5px;
+    margin: 2px;
+    border-radius: 3px;
+    width: fit-content;
+}
 .dbUserCover {
     padding: 20px 10px;
     /* background-color: rgba(255, 255, 255, .6); */
@@ -39,9 +55,15 @@
     width: 40%;
     min-width: 300px;
     height: 100vh;
-    margin: 10px 5px;
+    margin: 0 5px;
+    padding: 10px 0;
     overflow: auto;
     padding-bottom: 70px;
+}
+.dbEntryTitleTime {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 .dbEntryItem {
     background-color: rgb(255, 255, 255);
@@ -60,5 +82,10 @@
     margin: 20px 5px;
     box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .3), 0 2px 6px 2px rgba(60, 64, 67, .15);
     border-radius: 3px;
-    background-color: rgba(255, 255, 255, .8);
+    background-color: rgba(255, 255, 255, .9);
+}
+.mapHolder {
+    width: 100%;
+    border-radius: 5px;
+    overflow: hidden;
 }

@@ -4,11 +4,13 @@ import Layout from '../layout/Layout';
 import './dashboard.css'
 import axios from 'axios'
 import { server } from '../../setting'
+import ShowLocationsEvent from '../locationSearch/ShowLocationsEvent'
+import { sortByDate } from '../utils'
 
 function Dashboard(props) {
   const [userState, dispatchUserState] = useContext(UserContext);
   const [entries, updateEntries] = useState([]);
-
+  const [skills, updateSkills] = useState([]);
   useEffect(() => {
     {
       if (userState.loggedIn) {
@@ -27,7 +29,25 @@ function Dashboard(props) {
       }
     }
   }, [userState.loggedIn]);
-
+  useEffect(() => {
+    {
+      if (userState.loggedIn) {
+        (async () => {
+          try {
+            const response = await fetch(
+              `${server}/users/${userState.id}/skills`
+            );
+            const data = await response.json();
+            console.log(data[0]);
+            updateSkills([...data]);
+            console.log(skills)
+          } catch (error) {
+            console.log(error);
+          }
+        })();
+      }
+    }
+  }, [userState.loggedIn]);
   return (
     <Layout>
       <div className="dashboardBody">
@@ -36,15 +56,23 @@ function Dashboard(props) {
             <h1>{userState.name}</h1>
             <hr />
             <h2>{userState.email}</h2>
+            <div className='dbSkillBox'>
+              {skills.map((skill, i) => {
+                return <h3 className='dbSkill' key={i} style={{ backgroundColor: `rgb(${255 - ((i % 2) * 50)}, ${190 - (i % 7) * 20}, ${220 + (i % 2) * 30})` }} > {skill.skill}</h3>
+              })}
+            </div>
           </div>
         </div>
         <div className='dbEntries'>
           <h1 className='dbEntryItem dbHeader'>Recent Entries</h1>
-          {entries.map((entry) => {
+          {sortByDate(entries).map((entry) => {
             return (
               <div key={entry._id}>
                 <div className='dbEntryItem'>
-                  <h2>{entry.title}</h2>
+                  <div className='dbEntryTitleTime'>
+                    <h2>{entry.title}</h2>
+                    <h2>{new Date(entry.createdAt).toDateString()}</h2>
+                  </div>
                   <hr />
                   <p>{entry.content}</p>
                 </div>
@@ -54,9 +82,12 @@ function Dashboard(props) {
         </div>
         <div className='dbEvents'>
           <h1 className='dbHeader'>Events</h1>
+          <div className='mapHolder'>
+            <ShowLocationsEvent />
+          </div>
         </div>
       </div>
-    </Layout>
+    </Layout >
   );
 }
 

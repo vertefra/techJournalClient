@@ -8,6 +8,7 @@ import { server } from "../../setting";
 function Layout(props) {
     const [userState, dispatchUserState] = useContext(UserContext);
     const handleLogout = () => {
+        userState.loggedIn = false
         localStorage.clear();
         props.history.push("/login");
     };
@@ -20,6 +21,7 @@ function Layout(props) {
     }
     useEffect(() => {
         if (!localStorage.token) {
+            userState.loggedIn = false
             return
         }
         const userIdentification = parseJwt(localStorage.token);
@@ -40,24 +42,44 @@ function Layout(props) {
             <div className='header'>
                 <h1 className='headerTitle'>Tech Journal</h1>
                 <div className='navBar'>
-                    <div className='navItem'>
-                        <a className='itemText' href='/dashboard'>Dashboard</a>
-                    </div>
-                    <div className='navItem'>
-                        <a className='itemText' href='/entries'>Entries</a>
-                    </div>
-                    <div className='navItem'>
-                        <a className='itemText' href='/myevents'>My Events</a>
-                    </div>
+                    {userState.loggedIn ?
+                        <>
+                            <div className='navItem'>
+                                <a className='itemText' href='/dashboard'>Dashboard</a>
+                            </div>
+                            <div className='navItem'>
+                                <a className='itemText' href='/entries'>Entries</a>
+                            </div>
+                            <div className='navItem'>
+                                <a className='itemText' href='/myevents'>My Events</a>
+                            </div>
+                        </> :
+                        <>
+                            <div className='navItem'>
+                                <a className='itemText' href='/login'>Dashboard</a>
+                            </div>
+                            <div className='navItem'>
+                                <a className='itemText' href='/login'>Entries</a>
+                            </div>
+                            <div className='navItem'>
+                                <a className='itemText' href='/login'>My Events</a>
+                            </div>
+                        </>
+                    }
                     <div className='navItem'>
                         <a className='itemText' href='/events'>All Events</a>
                     </div>
                     <div className='navItem'>
                         <a className='itemText' href='/canvas'>Canvas</a>
                     </div>
-                    <div className='navItem'>
-                        <button className='itemText' onClick={handleLogout}>Log Out</button>
-                    </div>
+                    {userState.loggedIn ?
+                        <div className='navItem'>
+                            <button className='itemText' onClick={handleLogout}>Log Out</button>
+                        </div> :
+                        <div className='navItem'>
+                            <button className='itemText' onClick={handleLogout}>Log In</button>
+                        </div>
+                    }
                 </div>
             </div>
             <div>
