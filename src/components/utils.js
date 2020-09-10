@@ -35,11 +35,25 @@ const entryFormat = {
   year: "2-digit",
   month: "short",
   day: "2-digit",
+  hours12: false
 };
+
+const eventFormat = {
+  weekday: "short",
+  year: "2-digit",
+  month: "short",
+  day: "2-digit",
+  hours12: false
+}
 
 const formatDate = (createdAt, options) => {
   const event = new Date(createdAt);
-  return event.toLocaleDateString("en-EN", options);
+  return event.toLocaleString("en-EN", options);
 };
 
-export { sortByDate, formatDate, entryFormat };
+const eventFormatDate = (date, options) => {
+  const event = new Date(date);
+  return event.toLocaleString("en-EN", options);
+};
+
+export { sortByDate, formatDate, eventFormatDate, entryFormat, eventFormat };

@@ -291,7 +291,7 @@ function CreateEvent(props) {
             </div>
           </div>
           <input
-            className="btn-CreateEvent"
+            className="btn-CreateNewEvent"
             type="submit"
             value="Create a New Event"
           />
