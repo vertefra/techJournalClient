@@ -6,6 +6,9 @@
     align-items: center;
     margin: 60px 0;
 }
+.h1-UserEvents{
+    font-size: 2.5em;
+}
 .CreateEventContainer {
     width: 100%;
     display: flex;
