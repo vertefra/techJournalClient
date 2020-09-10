@@ -1,8 +1,19 @@
-.AllEventsContainer {
+.AllPublicEventsContainer {
     width: 100%;
-     display: flex;
-     flex-direction: column; 
+    display: flex;
+    flex-direction: column; 
     justify-content: center;
     align-items: center;
-    margin: 30px 0;
+    margin: 70px 0;
+}
+.h1-AllEvents {
+    font-size: 2.6em;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgb(180, 180, 180);
+}
+.p-AllEvents {
+    padding: 10px 300px;
+    text-align: center;
+    font-size: 1.1em;
 }

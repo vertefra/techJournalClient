@@ -29,8 +29,9 @@ function Events(props) {
 
     return (
         <Layout>
-            <div className="AllEventsContainer">
-                <h1>All Events</h1>
+            <div className="AllPublicEventsContainer">
+                <h1 className="h1-AllEvents">All Public Events</h1>
+                <p className="p-AllEvents">Here you'll be able to explore all events created by our users and click on "Learn More" form more info about each event. From there, you'll be able to click on "Will Attend" to add that event to your events you'll attend. Happy Exploring, Learing, and Networking!</p>
                 {allEvents.length > 0 && allEvents.map(event => {
                     return (
                         <div>
