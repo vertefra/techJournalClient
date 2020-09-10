@@ -24,10 +24,6 @@ function UserCardEvent(props) {
     })();
   };
 
-  useEffect(() => {
-    console.log("events from usercardevent", event);
-  });
-
   return (
     <>
       {event ? (

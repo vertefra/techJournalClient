@@ -3,6 +3,8 @@ import { UserContext } from "../../../context/ContextStore";
 import axios from "axios";
 import { server } from "../../../setting";
 import "./createEvent.css";
+import EventLocation from "../eventGeoLocator/EventLocation";
+import Topics from "../topicsComponent/Topics";
 
 function CreateEvent(props) {
   const [userState, dispatchUserState] = useContext(UserContext);
@@ -11,12 +13,23 @@ function CreateEvent(props) {
     title: "",
     date: "",
     description: "",
-    location: "",
   });
 
-  const [topics, updateTopics] = useState({
-    skill: "",
+  // this state is handled by EventLocation Component
+
+  const [location, updateLocation] = useState({
+    name: "",
+    formatted_address: "",
+    lat: 0,
+    lng: 0,
   });
+  // ================================================
+
+  //  this state is handled by the Topics component
+
+  const [topics, setTopics] = useState([]);
+
+  // ================================================
 
   const [host, updateHost] = useState({
     name: "",
@@ -34,9 +47,9 @@ function CreateEvent(props) {
     updateEvent({ ...event, [e.target.id]: e.target.value });
   };
 
-  const handleChangeTopics = (event) => {
-    updateTopics({ ...topics, skill: event.target.value });
-  };
+  // const handleChangeTopics = (event) => {
+  //   updateTopics({ ...topics, skill: event.target.value });
+  // };
 
   const handleChangeHost = (event) => {
     updateHost({ ...host, [event.target.name]: event.target.value });
@@ -55,7 +68,7 @@ function CreateEvent(props) {
           name: event.name,
           description: event.description,
           date: event.date,
-          location: event.location,
+          location: location,
           host: host,
           speaker: speaker,
         };
@@ -70,7 +83,6 @@ function CreateEvent(props) {
           ...event,
           ...{ title: "", date: "", description: "", location: "" },
         });
-        updateTopics({ ...topics, ...{ skill: "" } });
         updateHost({
           ...host,
           ...{
@@ -86,6 +98,13 @@ function CreateEvent(props) {
       }
     })();
   };
+
+  // debug
+
+  useEffect(() => {
+    console.log("set location is: ", location);
+    console.log("adding event_id");
+  }, [location]);
 
   return (
     <div className="CreateEventContainer">
@@ -164,7 +183,9 @@ function CreateEvent(props) {
                 />
                 <br />
               </div>
-              <div>
+              {/* this is where I insert the topics controller */}
+              <Topics controller={[topics, setTopics]} />
+              {/* <div>
                 <label htmlFor="topics">Topic</label>
                 <br />
                 <input
@@ -175,8 +196,9 @@ function CreateEvent(props) {
                   value={topics.skill}
                   onChange={handleChangeTopics}
                 />
-                <br />
-              </div>
+               <br />
+              </div> */}
+
               <div>
                 <label htmlFor="description">Description</label>
                 <br />
@@ -238,6 +260,8 @@ function CreateEvent(props) {
               </div>
               <div>
                 <label htmlFor="location">Location</label>
+                {/* this is where I should insert my special input */}
+                {/* <label htmlFor="location">Location</label>
                 <br />
                 <input
                   className="FormInput"
@@ -246,6 +270,11 @@ function CreateEvent(props) {
                   id="location"
                   value={event.location}
                   onChange={handleChange}
+                /> */}
+                {/* and here where it end.  */}
+                <EventLocation
+                  id="location"
+                  controller={[location, updateLocation]}
                 />
                 <br />
               </div>

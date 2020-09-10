@@ -36,10 +36,6 @@ function UserEvents(props) {
     }
   }, [userState.loggedIn, events]);
 
-  useEffect(() => {
-    console.log(events);
-  });
-
   return (
     <Layout>
       <div className="AllEventsContainer">
