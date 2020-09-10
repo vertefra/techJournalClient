@@ -10,7 +10,6 @@ export default function Map({ myLocation, zoomLevel, eventsLocations }) {
       <div className="google-map">
         <GoogleMapReact
           style={{ height: "100%", width: "100%" }}
-          bootstrapURLKeys={{ key }}
           defaultCenter={myLocation}
           defaultZoom={zoomLevel}
           controlSize="400px"
