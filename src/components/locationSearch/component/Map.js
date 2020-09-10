@@ -3,7 +3,6 @@ import GoogleMapReact from "google-map-react";
 import MyLocationPin from "./MyLocationPin";
 import "./style/map.css";
 import EventsLocationPin from "./EventsLocationsPin";
-const key = "AIzaSyBpqB23w-8bt3yQP1cYL6zQU9wKz7j6SmI";
 
 export default function Map({ myLocation, zoomLevel, eventsLocations }) {
   return (
