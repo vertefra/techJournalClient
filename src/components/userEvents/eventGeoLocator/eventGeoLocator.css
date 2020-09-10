@@ -1,0 +1,15 @@
+.suggestions {
+    background-color: whitesmoke;
+    border: 1px solid black;
+    padding: 2px;
+}
+
+.suggestions:hover {
+    background-color: grey;
+    color: purple;
+    cursor: pointer;
+}
+
+ul {
+    list-style: none;
+}
