@@ -1,15 +1,78 @@
-.CardEventContainer {
+.AllEventsContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+    margin: 60px 0;
+}
+.CreateEventContainer {
     width: 100%;
     display: flex;
     justify-content: center;
+    margin-bottom: 30px;
 }
-.CardItem {
-    width: 500px;
-    margin: 30px 0 0 0;
+.CreateEventCard {
+    width: 1200px;
+    margin: 10px 0 0 0;
     padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: left;
     box-shadow: 0 1px 2px 0 rgba(60,64,67,.30), 0 2px 6px 2px rgba(60,64,67,.15);
     border-radius: 8px;
+    background: rgb(249, 245, 255)
+}
+.MainFormHeadline {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    /* border-bottom: 1px solid rgb(180, 180, 180); */
+}
+.Legend {
+    padding-bottom: 15px;
+    font-size: 1.3em;
+}
+.FormEvent {
+    display: flex;
+    flex-direction: row;
+    margin: 10px 10px 15px 10px;
+    padding: 10px;
+}
+.HostInfo {
+    border-right: 1px solid rgb(180, 180, 180);
+    padding: 15px 30px 0px 0px;
+}
+.AboutTheEvent{
+    border-right: 1px solid rgb(180, 180, 180);
+    padding: 15px 30px 0px 15px;
+}
+.SpeakerInfo {
+    border-right: 1px solid rgb(180, 180, 180);
+    padding: 15px 30px 0px 15px;
+}
+.EventDetails {
+    padding: 15px 0px 0px 15px;
+}
+/* label {
+    display: block;
+} */
+.FormInput {
+    width: 100%;
+    margin: 10px 0;
+    /* padding: 10px; */
+    box-sizing: border-box;
+    border: 1px solid;
+    border-radius: 5px;
+    background: rgb(248, 245, 253);
+}
+.btn-CreateEvent {
+    display: flex;
+    width: 25%;
+    background: rgb(19, 0, 65); 
+    /* background: rgb(166, 111, 255); */
+    color: white;
+    cursor: pointer;
+    justify-content: center;
+    font-size: 1.5em;
 }
