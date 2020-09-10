@@ -46,7 +46,7 @@ function ShowEvent(props) {
                             <div className="CardItemEvent">
                                 <h2 className="lable">Event Details</h2>
                                 <h3>Date and Time: {formattedDate}</h3>
-                                <h3>Location: {event.location}</h3>
+                                <h3>Location: {event.location.formatted_address}</h3>
                             </div>
                             <div className="CardItemEvent">
                                 <h2 className="lable">Speaker Info:</h2>
