@@ -38,7 +38,7 @@ function Layout(props) {
     return (
         <div>
             <div className='header'>
-                <h1 className='headerTitle'>App Title</h1>
+                <h1 className='headerTitle'>Tech Journal</h1>
                 <div className='navBar'>
                     <div className='navItem'>
                         <a className='itemText' href='/dashboard'>Dashboard</a>

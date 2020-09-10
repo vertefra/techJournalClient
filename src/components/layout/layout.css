@@ -22,9 +22,9 @@
 
 .headerTitle {
     color: rgb(255, 255, 255);
-    margin: 0 5px;
+    margin: 0 10px;
     /* background-color: rgba(255, 255, 255, .15); */
-    width: 140px;
+    width: fit-content;
     text-align: center;
     border-radius: 3px;
 }
