@@ -11,6 +11,8 @@ import UserEvents from "./components/userEvents/UserEvents";
 import "./components/animations.css";
 import ShowLocationsEvent from "./components/locationSearch/ShowLocationsEvent";
 
+require("dotenv").config();
+
 export default function App() {
   // ROUTES ================================== //
 
