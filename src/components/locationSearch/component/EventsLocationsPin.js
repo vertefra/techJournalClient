@@ -3,7 +3,7 @@ import React from "react";
 import { Icon, InlineIcon } from "@iconify/react";
 import locationIcon from "@iconify/icons-bytesize/location";
 
-export default function LocationPin({ text }) {
+export default function EventsLocationPin({ text }) {
   return (
     <div className="location-pin">
       <Icon width={"40px"} icon={locationIcon} />
