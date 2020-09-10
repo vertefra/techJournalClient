@@ -2,9 +2,7 @@ import React from "react";
 
 export default function ShowTopics(props) {
   const [topics, setTopics] = props.controller;
-  console.log(topics);
   const handleDeleteTopic = (e) => {
-    console.log(e.target.id);
     const newTopics = topics.filter((topic) => topic.id !== e.target.id);
     setTopics([...newTopics]);
   };

@@ -40,8 +40,8 @@ export default function EventLocation(props) {
       showOptions: false,
     });
     updateLocation({
-      ...location,
-      ...candidate,
+      formatted_address: candidate.formatted_address,
+      name: candidate.name,
       lat: candidate.geometry.location.lat,
       lng: candidate.geometry.location.lng,
     });

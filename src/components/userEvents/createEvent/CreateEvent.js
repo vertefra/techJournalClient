@@ -16,6 +16,8 @@ function CreateEvent(props) {
     description: "",
   });
 
+  // =================================================
+
   // this state is handled by EventLocation Component
 
   const [location, updateLocation] = useState({
@@ -27,7 +29,7 @@ function CreateEvent(props) {
   // ================================================
 
   // this state is handled by the Topics component
-  // and by the showToipic component
+  // and by the showTopic component
 
   const [topics, setTopics] = useState([]);
 
@@ -49,10 +51,6 @@ function CreateEvent(props) {
     updateEvent({ ...event, [e.target.id]: e.target.value });
   };
 
-  // const handleChangeTopics = (event) => {
-  //   updateTopics({ ...topics, skill: event.target.value });
-  // };
-
   const handleChangeHost = (event) => {
     updateHost({ ...host, [event.target.name]: event.target.value });
   };
@@ -63,6 +61,12 @@ function CreateEvent(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // creating array of id only for topics
+    // for comp. with data model
+    const topicsId = topics.map((topic) => topic.id);
+    // filtering unique ids with set
+    const uniqueTopicsId = [...new Set(topicsId)];
+    console.log(uniqueTopicsId);
     (async () => {
       try {
         const body = {
@@ -72,6 +76,8 @@ function CreateEvent(props) {
           date: event.date,
           location: location,
           host: host,
+          location: location,
+          topics: uniqueTopicsId, // controlled by ShowTopics and Topics components
           speaker: speaker,
         };
         console.log("sending body: ", body);
