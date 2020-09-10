@@ -29,7 +29,7 @@ function UserCardEvent(props) {
 
   return (
     <>
-      {event ? (
+      {event.location ? (
         <div className="UserCardEventContainer">
           <div className="UserCardItem">
             <div className="UserCardItemAbout">
