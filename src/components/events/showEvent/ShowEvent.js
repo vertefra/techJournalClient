@@ -5,13 +5,13 @@ import { Link } from "react-router-dom";
 import "./showEvent.css";
 import { server } from '../../../setting';
 import WillAttend from '../willAttend/WillAttend';
-import { formatDate, entryFormat } from "../../utils";
+import { eventFormatDate, eventFormat } from "../../utils";
 
 
 function ShowEvent(props) {
     // const [userState, dispatchUserState] = useContext(UserContext);
     const [event, updateEvent] = useState({});
-    const formattedDate = formatDate(event.date, entryFormat);
+    const dateFormat = eventFormatDate(event.date, eventFormat);
 
 
     useEffect(() => {
@@ -45,7 +45,7 @@ function ShowEvent(props) {
                             </div>
                             <div className="CardItemEvent">
                                 <h2 className="lable">Event Details</h2>
-                                <h3>Date and Time: {formattedDate}</h3>
+                                <h3>Date and Time: {dateFormat}</h3>
                                 <h3>Location: {event.location.formatted_address}</h3>
                             </div>
                             <div className="CardItemEvent">
