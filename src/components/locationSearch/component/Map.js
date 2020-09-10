@@ -5,11 +5,14 @@ import "./style/map.css";
 import EventsLocationPin from "./EventsLocationsPin";
 
 export default function Map({ myLocation, zoomLevel, eventsLocations }) {
+  const KEY = process.env.REACT_APP_KEY;
+  console.log(KEY);
   return (
     <div className="map">
       <div className="google-map">
         <GoogleMapReact
           style={{ height: "100%", width: "100%" }}
+          bootstrapURLKeys={{ key: KEY }}
           defaultCenter={myLocation}
           defaultZoom={zoomLevel}
           controlSize="400px"
