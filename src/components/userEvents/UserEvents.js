@@ -22,7 +22,6 @@ function UserEvents(props) {
             const response = await axios.get(
               `${server}/users/${userState.id}/events?events=createdEvents`
             );
-            console.log(response);
             updateEvents({
               ...events,
               eventsArr: [...response.data],

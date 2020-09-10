@@ -103,8 +103,8 @@ function CreateEvent(props) {
 
   useEffect(() => {
     console.log("set location is: ", location);
-    console.log("adding event_id");
-  }, [location]);
+    console.log("add topic: ", topics);
+  }, [location, topics]);
 
   return (
     <div className="CreateEventContainer">
@@ -183,21 +183,6 @@ function CreateEvent(props) {
                 />
                 <br />
               </div>
-              {/* this is where I insert the topics controller */}
-              <Topics controller={[topics, setTopics]} />
-              {/* <div>
-                <label htmlFor="topics">Topic</label>
-                <br />
-                <input
-                  className="FormInput"
-                  type="text"
-                  name="topics"
-                  id="topics"
-                  value={topics.skill}
-                  onChange={handleChangeTopics}
-                />
-               <br />
-              </div> */}
 
               <div>
                 <label htmlFor="description">Description</label>
@@ -212,6 +197,22 @@ function CreateEvent(props) {
                 />
                 <br />
               </div>
+              {/* this is where I insert the topics controller */}
+              <label htmlFor="topics">Topics</label>
+              <Topics id="topics" controller={[topics, setTopics]} />
+              {/* <div>
+                <label htmlFor="topics">Topic</label>
+                <br />
+                <input
+                  className="FormInput"
+                  type="text"
+                  name="topics"
+                  id="topics"
+                  value={topics.skill}
+                  onChange={handleChangeTopics}
+                />
+               <br />
+              </div> */}
             </div>
             <div className="SpeakerInfo">
               <h3 className="Legend">Speaker Information</h3>
