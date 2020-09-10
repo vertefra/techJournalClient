@@ -6,7 +6,6 @@ import EventsLocationPin from "./EventsLocationsPin";
 
 export default function Map({ myLocation, zoomLevel, eventsLocations }) {
   const KEY = process.env.REACT_APP_KEY;
-  console.log(KEY);
   return (
     <div className="map">
       <div className="google-map">
