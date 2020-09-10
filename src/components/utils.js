@@ -35,7 +35,6 @@ const entryFormat = {
   year: "2-digit",
   month: "short",
   day: "2-digit",
-  hours12: false
 };
 
 const eventFormat = {
@@ -43,17 +42,13 @@ const eventFormat = {
   year: "2-digit",
   month: "short",
   day: "2-digit",
-  hours12: false
-}
+  hours: "long",
+};
 
 const formatDate = (createdAt, options) => {
   const event = new Date(createdAt);
+  console.log(event.toLocaleString("en-EN", options));
   return event.toLocaleString("en-EN", options);
 };
 
-const eventFormatDate = (date, options) => {
-  const event = new Date(date);
-  return event.toLocaleString("en-EN", options);
-};
-
-export { sortByDate, formatDate, eventFormatDate, entryFormat, eventFormat };
+export { sortByDate, formatDate, entryFormat, eventFormat };
