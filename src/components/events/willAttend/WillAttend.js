@@ -32,7 +32,7 @@ function WillAttend(props) {
 
     return (
         <div>
-            <button id={event._id} onClick={handleEventsWillAttend}>Attend Event</button>
+            <button className="btn-WillAttend" id={event._id} onClick={handleEventsWillAttend}>Attend Event</button>
         </div>
     );
 };
