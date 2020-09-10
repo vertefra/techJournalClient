@@ -137,7 +137,7 @@ function Canvas() {
                             <label>Path Shape: </label>
                             <select name='path' value={properties.path} onChange={handlePropertyChange}>
                                 <option value='round'>Round</option>
-                                <option value='square'>Square</option>
+                                <option value='miter'>Square</option>
                             </select>
                         </div>
                     </div>

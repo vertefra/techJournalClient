@@ -4,6 +4,8 @@ import Layout from '../layout/Layout';
 import './dashboard.css'
 import axios from 'axios'
 import { server } from '../../setting'
+import ShowLocationsEvent from '../locationSearch/ShowLocationsEvent'
+import { sortByDate } from '../utils'
 
 function Dashboard(props) {
   const [userState, dispatchUserState] = useContext(UserContext);
@@ -27,7 +29,10 @@ function Dashboard(props) {
       }
     }
   }, [userState.loggedIn]);
-
+  useEffect(() => {
+    const newArray = sortByDate(entries)
+    console.log(entries, newArray)
+  }, [userState]);
   return (
     <Layout>
       <div className="dashboardBody">
@@ -54,6 +59,9 @@ function Dashboard(props) {
         </div>
         <div className='dbEvents'>
           <h1 className='dbHeader'>Events</h1>
+          <div>
+            <ShowLocationsEvent />
+          </div>
         </div>
       </div>
     </Layout>
