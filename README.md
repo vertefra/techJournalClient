@@ -2,13 +2,14 @@
 
 to run development server
 
-### yarn build
+### yarn build 
+
 
 compile a version in build folder
 
 ### yarn start
 
-run compiled version
+
 
 ## GeoLocate component:
 
