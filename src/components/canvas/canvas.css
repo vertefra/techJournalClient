@@ -10,11 +10,13 @@ canvas:hover {
     cursor: crosshair;
 }
 .canvasSettings {
+    display: flex;
+    justify-content: space-evenly;
     box-shadow:  0 1px 2px 0 rgba(60,64,67,.30), 0 2px 6px 2px rgba(60,64,67,.20);
     border-radius: 3px;
     margin: 70px 20px 30px 20px;
     padding: 5px 20px;
-    font-size: 20px;
+    font-size: 18px;
 }
 input[type=color] {
     width: 100px;
@@ -22,15 +24,27 @@ input[type=color] {
     margin: 0;
 }
 .flexSettings {
+    width: 47%;
     display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.flexSettingsBox {
+    display: flex;
+    width: 100%;
     justify-content: space-evenly;
     align-items: center;
 }
 .flexSettingsItem {
     display: flex;
-    justify-content: space-between;
+    width: 100%;
+    justify-content: center;
     align-items: center;
 }
 .settingsItem {
     margin: 0 auto;
+}
+input[type=range] {
+    padding: 0;
 }
