@@ -1,0 +1,17 @@
+.map {
+  position: relative !important;
+  width: 100%;
+  height: 100%;
+}
+
+.location-pin {
+  width: 80px;
+  text-align: center;
+}
+
+.pinLabel {
+  font-size: 18px;
+  text-align: center;
+  margin: 0 auto;
+  width: 80px;
+}
