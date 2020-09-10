@@ -73,15 +73,15 @@ export default function EventLocation(props) {
       });
     } else {
       // for testing purposes uncomment this section
-      updateOptions({
-        ...options,
-        showOptions: true,
-      });
+      // updateOptions({
+      //   ...options,
+      //   showOptions: true,
+      // });
       //+++++++++++++++++++++++++++++++++++++++++++++++
     }
     // ======================================================================= //
     // this makes the actual request. make sure is uncommented in production   //
-    // sendQueryToServer(query);                                               //
+    sendQueryToServer(query);
     // ======================================================================= //
   }, [query]);
   return (

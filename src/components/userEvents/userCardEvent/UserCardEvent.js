@@ -3,12 +3,15 @@ import { UserContext } from "../../../context/ContextStore";
 import axios from "axios";
 import { server } from "../../../setting";
 import "./userCardEvent.css";
+import { eventFormatDate, eventFormat } from "../../utils";
+
 
 function UserCardEvent(props) {
   // const event = props.event;
   const [userState, dispatchUserState] = useContext(UserContext);
   const [event, updateEvent] = useState({ ...props.event });
   const [events, updateEvents] = props.controllers;
+  const dateFormat = eventFormatDate(event.date, eventFormat);
 
   const handleDelete = (event) => {
     (async () => {
@@ -39,7 +42,7 @@ function UserCardEvent(props) {
             </div>
             <div className="UserCardItemDetails">
               <h3>Event Details</h3>
-              <h4>Date and Time: {event.date}</h4>
+              <h4>Date and Time: {dateFormat}</h4>
               <h4>Location: {event.location.formatted_address}</h4>
             </div>
             <div className="UserCardItemContact">
@@ -55,8 +58,8 @@ function UserCardEvent(props) {
           </div>
         </div>
       ) : (
-        "loading events..."
-      )}
+          "loading events..."
+        )}
     </>
   );
 }

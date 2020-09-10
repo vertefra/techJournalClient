@@ -5,10 +5,14 @@ import { Link } from "react-router-dom";
 import "./showEvent.css";
 import { server } from '../../../setting';
 import WillAttend from '../willAttend/WillAttend';
+import { eventFormatDate, eventFormat } from "../../utils";
+
 
 function ShowEvent(props) {
     // const [userState, dispatchUserState] = useContext(UserContext);
     const [event, updateEvent] = useState({});
+    const dateFormat = eventFormatDate(event.date, eventFormat);
+
 
     useEffect(() => {
         (async () => {
@@ -27,32 +31,34 @@ function ShowEvent(props) {
     return (
         <Layout>
             <div className="ShowPageContainer">
-                <Link to={'/events'}>Back to All Events</Link>
                 {Object.keys(event).length > 0 ? (
                     <div className="ShowEventContainer">
+                        <Link className="LinkToAllEvents" to={'/events'}>Back to All Events</Link>
                         <div className="CardMainItem">
                             <div className="CardItemTitle">
-                                <h2>{event.title}</h2>
+                                <h1>{event.title}</h1>
                             </div>
-                            <div className="CardItemAbout">
-                                <h3>About the Event</h3>
-                                <h4>Topic: {event.skill}</h4>
-                                <h4>Description: {event.description}</h4>
-                                <h4>Speaker Info:</h4>
-                                <h4>Name: {event.speaker.name}</h4>
-                                <h4>Title: {event.speaker.title}</h4>
+                            <div className="CardItemEvent">
+                                <h2 className="lable">About the Event</h2>
+                                <h3>Topic: {event.skill}</h3>
+                                <h3>Description: {event.description}</h3>
                             </div>
-                            <div className="CardItemDetails">
-                                <h3>Event Details</h3>
-                                <h4>Date and Time: {event.date}</h4>
-                                <h4>Location: {event.location}</h4>
+                            <div className="CardItemEvent">
+                                <h2 className="lable">Event Details</h2>
+                                <h3>Date and Time: {dateFormat}</h3>
+                                <h3>Location: {event.location.formatted_address}</h3>
                             </div>
-                            <div className="CardItemContact">
-                                <h3>Host Contact Info</h3>
-                                <h4>Name: {event.host.name}</h4>
-                                <h4>Title: {event.host.title}</h4>
-                                <h4>Email: {event.host.email}</h4>
-                                <h4>Phone Number: {event.host.phoneNumber}</h4>
+                            <div className="CardItemEvent">
+                                <h2 className="lable">Speaker Info:</h2>
+                                <h3>Name: {event.speaker.name}</h3>
+                                <h3>Title: {event.speaker.title}</h3>
+                            </div>
+                            <div className="CardItemEventHost">
+                                <h2 className="lable">Host Contact Info</h2>
+                                <h3>Name: {event.host.name}</h3>
+                                <h3>Title: {event.host.title}</h3>
+                                <h3>Email: {event.host.email}</h3>
+                                <h3>Phone Number: {event.host.phoneNumber}</h3>
                             </div>
                             <WillAttend event={event} />
                         </div>

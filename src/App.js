@@ -56,6 +56,12 @@ export default function App() {
       component: ShowLocationsEvent,
       key: "geolocations",
     },
+    {
+      path: "/",
+      exact: true,
+      component: LoginPage,
+      key: "default",
+    },
   ];
 
   // ========================================= //
