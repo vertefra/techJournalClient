@@ -5,6 +5,7 @@ import axios from 'axios';
 import { server } from '../../setting';
 import UserCardEvent from './userCardEvent/UserCardEvent';
 import CreateEvent from './createEvent/CreateEvent';
+import './createEvent/createEvent.css';
 
 function UserEvents(props) {
     const [userState, dispatchUserState] = useContext(UserContext);
@@ -37,7 +38,7 @@ function UserEvents(props) {
         <Layout>
             <div className="AllEventsContainer">
                 <CreateEvent />
-                <h2>All User Events</h2>
+                <h2 className="h1-UserEvents">All Created Events by {userState.name.toUpperCase()}</h2>
                 {events.eventsArr.length > 0 && events.eventsArr.map((event) => {
                     return (
                         <UserCardEvent key={event._id} event={event} controllers={[events, updateEvents]} />

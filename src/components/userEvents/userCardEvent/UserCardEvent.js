@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { UserContext } from "../../../context/ContextStore";
 import axios from "axios";
 import { server } from '../../../setting';
-
+import './userCardEvent.css'
 
 function UserCardEvent(props) {
     // const event = props.event;
@@ -25,9 +25,9 @@ function UserCardEvent(props) {
 
 
     return (
-        <div className="CardEventContainer">
-            <div className="CardItem">
-                <div className="CardItemAbout">
+        <div className="UserCardEventContainer">
+            <div className="UserCardItem">
+                <div className="UserCardItemAbout">
                     <h3>About the Event</h3>
                     <h4>Topic: {event.skill}</h4>
                     <h4>Description: {event.description}</h4>
@@ -35,12 +35,12 @@ function UserCardEvent(props) {
                     <h4>Name: {event.speaker.name}</h4>
                     <h4>Title: {event.speaker.title}</h4>
                 </div>
-                <div className="CardItemDetails">
+                <div className="UserCardItemDetails">
                     <h3>Event Details</h3>
                     <h4>Date and Time: {event.date}</h4>
                     <h4>Location: {event.location}</h4>
                 </div>
-                <div className="CardItemContact">
+                <div className="UserCardItemContact">
                     <h3>Host Contact Info</h3>
                     <h4>Name: {event.host.name}</h4>
                     <h4>Title: {event.host.title}</h4>
