@@ -6,7 +6,7 @@ import { UserContext } from "../../../context/ContextStore";
 function WillAttend(props) {
   const [userState] = useContext(UserContext);
   const [event] = useState({ ...props.event });
-  const [isAttended, setIsAttended] = useState("");
+  const [isAttended, setIsAttended] = useState(undefined);
   const [eventsWillAttend, updateEventsWillAttend] = useState([]);
 
   const handleEventsWillAttend = (event) => {
@@ -18,16 +18,33 @@ function WillAttend(props) {
               `${server}/users/${userState.id}/events/${event.target.id}`
             );
             console.log(response);
+            setIsAttended(true);
             // updateEventsWillAttend({ ...eventsWillAttend });
           } catch (error) {
             console.log(error);
           }
         })();
       } else {
-        console.log("please log in");
+        console.log("please log in or isAttended=", isAttended);
       }
     }
   };
+
+  useEffect(() => {
+    console.log("check will attend");
+    const thisEvent = eventsWillAttend.find((evt) => {
+      console.log(evt);
+      return evt._id.toString() === event._id.toString();
+    });
+    console.log(isAttended);
+    if (thisEvent) {
+      console.log("I will attending the event");
+      setIsAttended(true);
+    } else {
+      setIsAttended(false);
+    }
+    console.log(thisEvent);
+  }, [eventsWillAttend]);
 
   useEffect(() => {
     (async () => {
@@ -40,17 +57,7 @@ function WillAttend(props) {
         console.log(error);
       }
     })();
-  }, []);
-
-  useEffect(() => {
-    const thisEvent = eventsWillAttend.find((evt) => {
-      return evt._id.toString() === event._id;
-    });
-    if (thisEvent) {
-      setIsAttended(true);
-    }
-    console.log(thisEvent);
-  }, [eventsWillAttend]);
+  }, [userState.loggedIn]);
 
   return (
     <div>

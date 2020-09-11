@@ -47,7 +47,6 @@ const eventFormat = {
 
 const formatDate = (createdAt, options) => {
   const event = new Date(createdAt);
-  console.log(event.toLocaleString("en-EN", options));
   return event.toLocaleString("en-EN", options);
 };
 

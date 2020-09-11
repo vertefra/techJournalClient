@@ -42,9 +42,7 @@ export default function ShowLocationsEvent() {
     if (userState.id) {
       (async () => {
         try {
-          const response = await fetch(
-            `${server}/users/${userState.id}/events/?events=eventsWillAttend`
-          );
+          const response = await fetch(`${server}/events`);
           const data = await response.json();
           const myEventsLocations = [];
           for (let event of data) {
@@ -83,6 +81,10 @@ export default function ShowLocationsEvent() {
     width: "100%",
     height: "400px",
   };
+
+  useEffect(() => {
+    console.log(eventsLocations);
+  });
 
   return (
     <div>
