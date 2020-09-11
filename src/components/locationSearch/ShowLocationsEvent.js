@@ -52,6 +52,7 @@ export default function ShowLocationsEvent() {
             location.lng = event.location.lng;
             location.name = event.location.name;
             location.event_id = event._id;
+            location.event_name = event.title;
             myEventsLocations.push(location);
           }
           updateEventsLocations([...myEventsLocations]);

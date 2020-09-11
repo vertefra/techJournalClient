@@ -23,8 +23,9 @@ export default function Map({ myLocation, zoomLevel, eventsLocations }) {
                 key={idx}
                 lat={event.lat}
                 lng={event.lng}
-                text={event.name}
+                place={event.name}
                 event_id={event.event_id}
+                event_name={event.event_name}
               />
             );
           })}

@@ -1,0 +1,23 @@
+.pinEvent:hover {
+    color: red;
+}
+
+.pinEvent {
+    background-color: rgba(185, 0, 255, 1);
+    font-weight: 900;
+    color: #1b0040;
+    padding: 5px;
+    font-size: 13px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-bottom: 3px;
+}
+
+.pinEvent:hover {
+    color: rgba(185, 0, 255, 1);
+    background-color: #1b0040;
+}
+
+a {
+    text-decoration: none;
+}
