@@ -40,7 +40,10 @@ function Layout(props) {
     return (
         <div>
             <div className='header'>
-                <h1 className='headerTitle'>Tech Journal</h1>
+                <div className='logoTitleContainer'>
+                    <div className='logoBox'></div>
+                    <h1 className='headerTitle'>Teky</h1>
+                </div>
                 <div className='navBar'>
                     {userState.loggedIn ?
                         <>
