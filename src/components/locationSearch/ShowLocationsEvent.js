@@ -3,26 +3,27 @@ import Geolocate from "./component/GeoLocate";
 import Map from "./component/Map";
 import { UserContext } from "../../context/ContextStore";
 import "./showLocationsEvents.css";
+import { server } from "../../setting";
 
 // mocck up locations... this will be loaded from the databse b
 
-const locations = [
-  {
-    address: "location1",
-    lat: 41,
-    lng: -74,
-  },
-  {
-    address: "location2",
-    lat: 41.5,
-    lng: -74.2,
-  },
-  {
-    address: "location3",
-    lat: 41.23,
-    lng: -73.9999,
-  },
-];
+// const locations = [
+//   {
+//     address: "location1",
+//     lat: 41,
+//     lng: -74,
+//   },
+//   {
+//     address: "location2",
+//     lat: 41.5,
+//     lng: -74.2,
+//   },
+//   {
+//     address: "location3",
+//     lat: 41.23,
+//     lng: -73.9999,
+//   },
+// ];
 
 // ============================================================
 
@@ -32,10 +33,38 @@ export default function ShowLocationsEvent() {
   const [myLocation, updateMylocation] = useState({
     lat: "",
     lng: "",
-    address: "Your Location",
+    formatted_address: "Your Location",
   });
 
-  const [eventsLocations, updateEventsLocations] = useState(locations);
+  const [eventsLocations, updateEventsLocations] = useState([]);
+
+  useEffect(() => {
+    if (userState.id) {
+      console.log(userState.id);
+      (async () => {
+        try {
+          const response = await fetch(
+            `${server}/users/${userState.id}/events/?events=eventsWillAttend`
+          );
+          const data = await response.json();
+          console.log(data);
+          const myEventsLocations = [];
+          for (let event of data) {
+            const location = {};
+            location.formatted_address = event.location.formatted_address;
+            location.lat = event.location.lat;
+            location.lng = event.location.lng;
+            location.name = event.location.name;
+            location.event_id = event._id;
+            myEventsLocations.push(location);
+          }
+          updateEventsLocations([...myEventsLocations]);
+        } catch (error) {
+          console.log(error);
+        }
+      })();
+    }
+  }, [userState.id]);
 
   useEffect(() => {
     console.log(userState.location);
@@ -61,8 +90,6 @@ export default function ShowLocationsEvent() {
   return (
     <div>
       <Geolocate />
-      <h1>geolocate</h1>
-      <h4>I should have this stuff as well on the map</h4>
       <div id="mapBox">
         {loading === false ? (
           <Map

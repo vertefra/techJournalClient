@@ -1,11 +1,11 @@
 import React, { useContext, useState, useEffect } from "react";
 import { UserContext } from "../../context/ContextStore";
-import Layout from '../layout/Layout';
-import './dashboard.css'
-import axios from 'axios'
-import { server } from '../../setting'
-import ShowLocationsEvent from '../locationSearch/ShowLocationsEvent'
-import { sortByDate } from '../utils'
+import Layout from "../layout/Layout";
+import "./dashboard.css";
+import axios from "axios";
+import { server } from "../../setting";
+import ShowLocationsEvent from "../locationSearch/ShowLocationsEvent";
+import { sortByDate } from "../utils";
 
 function Dashboard(props) {
   const [userState, dispatchUserState] = useContext(UserContext);
@@ -20,7 +20,6 @@ function Dashboard(props) {
               `${server}/users/${userState.id}/entries`
             );
             const data = await response.json();
-            console.log(data);
             updateEntries([...entries, ...data.entries]);
           } catch (error) {
             console.log(error);
@@ -40,7 +39,6 @@ function Dashboard(props) {
             const data = await response.json();
             console.log(data[0]);
             updateSkills([...data]);
-            console.log(skills)
           } catch (error) {
             console.log(error);
           }
@@ -51,25 +49,38 @@ function Dashboard(props) {
   return (
     <Layout>
       <div className="dashboardBody">
-        <div className='dbUserInfo'>
-          <div className='dbUserCover'>
+        <div className="dbUserInfo">
+          <div className="dbUserCover">
             <h1>{userState.name}</h1>
             <hr />
             <h2>{userState.email}</h2>
-            <div className='dbSkillBox'>
+            <div className="dbSkillBox">
               {skills.map((skill, i) => {
-                return <h3 className='dbSkill' key={i} style={{ backgroundColor: `rgb(${255 - ((i % 2) * 50)}, ${190 - (i % 7) * 20}, ${220 + (i % 2) * 30})` }} > {skill.skill}</h3>
+                return (
+                  <h3
+                    className="dbSkill"
+                    key={i}
+                    style={{
+                      backgroundColor: `rgb(${255 - (i % 2) * 50}, ${
+                        190 - (i % 7) * 20
+                      }, ${220 + (i % 2) * 30})`,
+                    }}
+                  >
+                    {" "}
+                    {skill.skill}
+                  </h3>
+                );
               })}
             </div>
           </div>
         </div>
-        <div className='dbEntries'>
-          <h1 className='dbEntryItem dbHeader'>Recent Entries</h1>
+        <div className="dbEntries">
+          <h1 className="dbEntryItem dbHeader">Recent Entries</h1>
           {sortByDate(entries).map((entry) => {
             return (
               <div key={entry._id}>
-                <div className='dbEntryItem'>
-                  <div className='dbEntryTitleTime'>
+                <div className="dbEntryItem">
+                  <div className="dbEntryTitleTime">
                     <h2>{entry.title}</h2>
                     <h2>{new Date(entry.createdAt).toDateString()}</h2>
                   </div>
@@ -77,17 +88,17 @@ function Dashboard(props) {
                   <p>{entry.content}</p>
                 </div>
               </div>
-            )
+            );
           })}
         </div>
-        <div className='dbEvents'>
-          <h1 className='dbHeader'>Events</h1>
-          <div className='mapHolder'>
+        <div className="dbEvents">
+          <h1 className="dbHeader">Events</h1>
+          <div className="mapHolder">
             <ShowLocationsEvent />
           </div>
         </div>
       </div>
-    </Layout >
+    </Layout>
   );
 }
 

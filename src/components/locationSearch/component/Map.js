@@ -17,19 +17,21 @@ export default function Map({ myLocation, zoomLevel, eventsLocations }) {
           controlSize="400px"
         >
           {eventsLocations.map((event, idx) => {
+            console.log(event);
             return (
               <EventsLocationPin
                 key={idx}
                 lat={event.lat}
                 lng={event.lng}
-                text={event.address}
+                text={event.formatted_address}
+                event_id={event.event_id}
               />
             );
           })}
           <MyLocationPin
             lat={myLocation.lat}
             lng={myLocation.lng}
-            text={myLocation.address}
+            text={myLocation.formatted_address}
           />
         </GoogleMapReact>
       </div>
