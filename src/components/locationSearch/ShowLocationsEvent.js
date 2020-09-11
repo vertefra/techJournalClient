@@ -40,14 +40,12 @@ export default function ShowLocationsEvent() {
 
   useEffect(() => {
     if (userState.id) {
-      console.log(userState.id);
       (async () => {
         try {
           const response = await fetch(
             `${server}/users/${userState.id}/events/?events=eventsWillAttend`
           );
           const data = await response.json();
-          console.log(data);
           const myEventsLocations = [];
           for (let event of data) {
             const location = {};
@@ -67,7 +65,6 @@ export default function ShowLocationsEvent() {
   }, [userState.id]);
 
   useEffect(() => {
-    console.log(userState.location);
     if (!userState.location.lat && !userState.location.lon) {
       console.log("location not set");
     } else {
